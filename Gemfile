@@ -45,3 +45,5 @@ gem 'role_model'
 
 # apply to a better server
 gem 'thin'
+
+gem 'docx'
