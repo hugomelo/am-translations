@@ -1,6 +1,7 @@
 Translations::Application.routes.draw do
   devise_for :users
 
+  match 'users/dashboard' => 'users#dashboard'
   resources :users
 
   resources :projects do
@@ -48,15 +49,16 @@ Translations::Application.routes.draw do
   #   end
 
   # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+     namespace :admin do
+       # Directs /admin/products/* to Admin::ProductsController
+       # (app/controllers/admin/products_controller.rb)
+       resources :projects
+       get "/" => 'admin#index'
+     end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'welcome#index'
+   root :to => 'users#dashboard'
 
   # See how all your routes lay out with "rake routes"
 end
