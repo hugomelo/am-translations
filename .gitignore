@@ -20,3 +20,7 @@ db/schema.rb
 
 config/database.yml
 doc/translations.mwb.bak
+TODO
+menu
+
+public/system
