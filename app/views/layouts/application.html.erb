@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Translations</title>
+  <title> AM Translations</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <nav>
-    <%= link_to "Sign up", new_user_registration_path %>
-  </nav>
+  <header>
+    <div class=title><%= link_to 'AM Translations', root_path %></div>
+    <div class=menu>
+      <ul>
+        <li><%= link_to t('layouts.application.all_projects'), projects_path %></li>
+        <li><%= link_to t('layouts.application.create_a_project'), new_project_path %></li>
+        <%# if can? :manage %>
+          <%= link_to t('admin'), admin_path %>
+        <%# end %>
+      </ul>
+    </div>
+    <nav id=userinfo>
+      <% if user_signed_in? %>
+        <%= link_to current_user.name, edit_user_path(current_user) %>
+        <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
+      <% end %>
+    </nav>
+  </header>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% unless notice.blank? %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% unless alert.blank? %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
 
-<%= yield %>
+  <%# if not user_signed_in? %>
+  <div id=main>
+    <%= yield %>
+  </div>
+
+  <footer>
+  <%= t('.licensed') %>
+  <%= link_to '(AGPL).', 'http://www.gnu.org/licenses/agpl-3.0.html' %>
+    <%= t('.download') %>
+    <a href="https://gitlab.com/hugomelo/translations">GitLab</a>
+  </footer>
 
 </body>
 </html>
