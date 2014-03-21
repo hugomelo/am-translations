@@ -188,6 +188,11 @@ div#main {
     }
 }
 
+.error_messages {
+  color: $red;
+  margin-bottom: 10px;
+}
+
 footer {
   position: absolute;
   bottom: 0;

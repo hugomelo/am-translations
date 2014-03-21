@@ -4,11 +4,32 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @languages = LanguageList::ALL_LANGUAGES
+    @languages = Language.all
+  end
+
+  def create
+    @project = Project.new(params[:project])
+
+    respond_to do |wants|
+      if @project.save
+        flash[:notice] = 'Project was successfully created.'
+        wants.html { redirect_to(@project) }
+      else
+        @languages = Language.all
+        wants.html { render :action => "new" }
+      end
+    end
   end
 
   def index
     @projects = Project.all
+  end
+
+  def show
+    respond_to do |wants|
+      wants.html # show.html.erb
+      wants.xml  { render :xml => @project }
+    end
   end
 
   private

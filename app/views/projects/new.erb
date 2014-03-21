@@ -1,7 +1,19 @@
 <h1> <%= t('.creating_a_project') %></h1>
 <%= form_for @project do |f| %>
-<%= f.label :filename, t('.choose_a_file') %>
-<%= f.file_field :filename %>
-<%= f.label :filename, t('.original_language_of_the_document') %>
-<%= collection_select @project, :language, @languages, "iso_639_1", :name %>
+  <% if @project.errors.any? %>
+    <div class=error_messages>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= f.label :source_filename, t('.choose_a_file') %>
+  <%= f.file_field :source_filename %>
+
+  <%= f.label :source_filename, t('.original_language_of_the_document') %>
+  <%= collection_select @project, :language, @languages, :abbreviation, :name %>
+
+  <%= f.submit "submit" %>
+
 <% end %>

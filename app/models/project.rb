@@ -13,14 +13,14 @@ class Project < ActiveRecord::Base
   validates_attachment_size :source_filename, :less_than => 100.megabytes
   validates_attachment_content_type :source_filename, content_type: ['application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 
-  after_create do |project|
+  after_save do |project|
     return if project.nil?
-    return
     doc = Docx::Document.open(project.source_filename.path)
     chapter = 1
     order = 0;
     doc.paragraphs.each do |p|
       #TODO fix for any language
+      puts p
       chapter += 1 if p.to_s.downcase.start_with? 'chapter '
       Paragraph.create(:text => p.to_s, :status => 'original', :chapter => chapter, :order => order, :project_id => project.id)
       order += 1

@@ -3,8 +3,9 @@ label {
   margin-bottom: 5px;
 }
 
-input {
+input,select {
   margin-bottom: 20px;
+  display: block;
 }
 input[type=submit] {
   width: auto;
