@@ -43,8 +43,9 @@ gem 'devise'
 gem 'cancan'
 gem 'role_model'
 
-gem 'language_list'
 # apply to a better server
 gem 'thin'
 
 gem 'docx'
+
+gem 'paperclip'
