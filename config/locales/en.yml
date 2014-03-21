@@ -211,9 +211,33 @@ en:
       <<: *errors
 
   # here starts the application translation
+  layouts:
+    application:
+      sign_out: 'Sign out'
+      licensed: 'This site was licensed as free software '
+      download: 'You can download the software from '
+      all_projects: 'All Projects'
+      create_a_project: 'Create a project'
+      projects: 'Projects'
+      users: 'Users'
+
   welcome:
     index:
       intro: 'This site is a online tool for translating documents and articles easily'
       intro2: 'You can be assigned to translate a piece of a document while others can, at same time, translate other.'
-      licensed: 'This site was licensed as free software '
-      download: 'You can download the software from '
+
+  users:
+    dashboard:
+      hi: 'Hi %s! This is your dashboard.'
+      projects: "Projects you've created"
+      reviews: "Projects you are assigned to review"
+      translations: "Projects you are assigned to translate"
+      project_name: 'Project Name'
+      translated_from: 'Translated from'
+      translated_to: 'Translated to'
+
+  projects:
+    new:
+      creating_a_project: 'Creating a new project'
+      choose_a_file: 'Choose a file from which to import the text in the docx format'
+      original_language_of_the_document: "Original language of the document"
