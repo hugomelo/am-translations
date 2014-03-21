@@ -1,0 +1,12 @@
+<% if not projects.nil? and projects.count > 0 %>
+  <h2><%= title %></h2>
+  <div class=projects>
+    <ul class=header>
+      <li class=name><%= t('users.dashboard.project_name') %></li>
+      <li class=from><%= t('users.dashboard.translated_from') %></li>
+      <li class=to><%= t('users.dashboard.translated_to') %></li>
+    </ul>
+    <%= render partial: "project", collection: projects %>
+  </div>
+<% end %>
+
