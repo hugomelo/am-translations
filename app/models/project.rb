@@ -6,9 +6,17 @@ class Project < ActiveRecord::Base
   has_many :paragraphs
   attr_accessible :owner_id, :language_id, :original_language_id, :source_project, :source_filename, :name
 
+  has_attached_file :source_filename
+  #TODO remove source_filename on migration
+
+  validates_attachment_presence :source_filename
+  validates_attachment_size :source_filename, :less_than => 100.megabytes
+  validates_attachment_content_type :source_filename, content_type: ['application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+
   after_create do |project|
     return if project.nil?
-    doc = Docx::Document.open(project.source_filename)
+    return
+    doc = Docx::Document.open(project.source_filename.path)
     chapter = 1
     order = 0;
     doc.paragraphs.each do |p|
