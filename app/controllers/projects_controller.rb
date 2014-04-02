@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(params[:project])
+    @project.owner_id = current_user.id
 
     respond_to do |wants|
       if @project.save
