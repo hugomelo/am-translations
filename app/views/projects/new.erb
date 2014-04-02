@@ -11,8 +11,11 @@
   <%= f.label :source_filename, t('.choose_a_file') %>
   <%= f.file_field :source_filename %>
 
-  <%= f.label :source_filename, t('.original_language_of_the_document') %>
-  <%= collection_select @project, :language, @languages, :abbreviation, :name %>
+  <%= f.label :original_language, t('.original_language_of_the_document') %>
+  <%= collection_select :project, :original_language_id, @languages, :abbreviation, :name %>
+
+  <%= f.label :language, t('.destination_language_of_the_document') %>
+  <%= collection_select :project, :language_id, @languages, :id, :name %>
 
   <%= f.submit "submit" %>
 
