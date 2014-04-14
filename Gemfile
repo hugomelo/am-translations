@@ -37,6 +37,8 @@ gem 'jquery-rails'
 group :development do
   # To use debugger
   gem 'debugger'
+  gem 'better_errors'
+  gem 'rails-dev-boost'
 end
 #
 gem 'devise'
