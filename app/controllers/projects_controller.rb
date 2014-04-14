@@ -22,6 +22,9 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def assign
+  end
+
   def index
     @projects = Project.all
   end
