@@ -38,7 +38,8 @@ group :development do
   # To use debugger
   gem 'debugger'
   gem 'better_errors'
-  gem 'rails-dev-boost'
+  gem 'rails-dev-boost', :github => 'thedarkone/rails-dev-boost'
+  gem 'rb-inotify', '>= 0.8.8'
 end
 #
 gem 'devise'
