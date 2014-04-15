@@ -2,13 +2,13 @@ class CreateParagraphs < ActiveRecord::Migration
   def change
     create_table :paragraphs do |t|
       t.text :text
-      t.references :project
+      t.references :document
       t.string :status
       t.integer :chapter
       t.integer :order
 
       t.timestamps
     end
-    add_index :paragraphs, :project_id
+    add_index :paragraphs, :document_id
   end
 end
