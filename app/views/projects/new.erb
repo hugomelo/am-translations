@@ -1,22 +1,31 @@
-<h1> <%= t('.creating_a_project') %></h1>
-<%= form_for @project do |f| %>
-  <% if @project.errors.any? %>
-    <div class=error_messages>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </div>
+<div id="project">
+
+  <div class=menu>
+    <div class="block selected"> <%= t('.create_a_project') %></div>
+    <div class=block> <%= t('.define_chapters') %></div>
+    <div class=block> <%= t('.assign_translators') %></div>
+    <div class=block> <%= t('.assign_revisors') %></div>
+  </div>
+
+  <%= form_for @project do |f| %>
+    <% if @project.errors.any? %>
+      <div class=error_messages>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= f.label :source_filename, t('.choose_a_file') %>
+    <%= f.file_field :source_filename %>
+
+    <%= f.label :from_language, t('.original_language_of_the_document') %>
+    <%= collection_select :project, :from_language_id, @languages, :id, :name %>
+
+    <%= f.label :to_language, t('.destination_language_of_the_document') %>
+    <%= collection_select :project, :to_language_id, @languages, :id, :name %>
+
+    <%= f.submit "submit" %>
+
   <% end %>
-
-  <%= f.label :source_filename, t('.choose_a_file') %>
-  <%= f.file_field :source_filename %>
-
-  <%= f.label :original_language, t('.original_language_of_the_document') %>
-  <%= collection_select :project, :original_language_id, @languages, :abbreviation, :name %>
-
-  <%= f.label :language, t('.destination_language_of_the_document') %>
-  <%= collection_select :project, :language_id, @languages, :id, :name %>
-
-  <%= f.submit "submit" %>
-
-<% end %>
+</div>
