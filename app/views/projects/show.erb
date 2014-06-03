@@ -1,7 +1,7 @@
 
 <h1><%= @project.name %></h1>
 
-<% @project.paragraphs.each do |p| %>
+<% @project.from_document.paragraphs.each do |p| %>
   <p>
     <%= p.text %>
   </p>
