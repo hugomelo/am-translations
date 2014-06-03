@@ -18,6 +18,7 @@ class Project < ActiveRecord::Base
   after_create :defcreated
   after_commit do |project|
     return if project.nil? or not @new_item
+    @new_item = nil
     doc = Docx::Document.open(project.source_filename.path)
     chapter = 1
     order = 0;
@@ -26,7 +27,6 @@ class Project < ActiveRecord::Base
     project.save!
     doc.paragraphs.each do |p|
       #TODO fix for any language
-      puts p
       chapter += 1 if p.to_s.downcase.start_with? 'chapter '
       Paragraph.create(:text => p.to_s, :status => 'original', :chapter => chapter, :order => order, :document_id => project.from_document_id)
       Paragraph.create(:text => '', :status => 'empty', :chapter => chapter, :order => order, :document_id => project.to_document_id)
