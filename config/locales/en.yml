@@ -238,8 +238,15 @@ en:
       translated_to: 'Translated to'
 
   projects:
+    create:
+      project_created: 'Project successfully created.'
     new:
       creating_a_project: 'Creating a new project'
       choose_a_file: 'Choose a file from which to import the text in the docx format'
       original_language_of_the_document: "Original language of the document"
       destination_language_of_the_document: "Destination language of the document"
+    assign:
+      submit_a_doc: "Submit a document"
+      define_chapters: "Define chapters"
+      assign_translators: "Assign translators"
+      assign_reviewers: "Assign Reviewers"
