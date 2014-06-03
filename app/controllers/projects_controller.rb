@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |wants|
       if @project.save
-        flash[:notice] = 'Project was successfully created.'
+        flash[:notice] = t('projects.create.project_created')
         wants.html { redirect_to(@project) }
       else
         @languages = Language.all
