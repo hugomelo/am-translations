@@ -1,16 +1,54 @@
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+$orange: #FE9310;
+#project {
+  margin: auto;
+  display: inline-block;
 
-input,select {
-  margin-bottom: 20px;
-  display: block;
-}
-input[type=submit] {
-  width: auto;
+  label {
+    display: block;
+    margin-bottom: 5px;
   }
 
-.arrow-right {
-  background-image: image-url('arrow-right.png');
+  input,select {
+    margin-bottom: 20px;
+    display: block;
+  }
+  input[type=submit] {
+    width: auto;
+  }
+
+  .arrow-right {
+    background-image: image-url('arrow-right.png');
+    background-repeat: no-repeat;
+    padding-left: 10px;
+    padding-top: -5px;
+    background-size: 10px 10px;
+    float:left;
+  }
+
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+
+  .menu {
+    background: rgba($orange, 0.8);
+    width: 600px;
+    line-height: 50px;
+    margin-bottom: 20px;
+    color: gray;
+
+    .selected {
+      color: $black;
+      font-weight: bold;
+    }
+
+    .block {
+      display: inline-block;
+      margin: 0 20px;
+
+    }
+
+  }
 }

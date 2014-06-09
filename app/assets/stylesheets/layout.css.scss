@@ -23,7 +23,7 @@ html, body {
 }
 body {
   line-height: 1;
-  font-family: 'EB Garamond', 'droid',sans-serif;
+  font-family: 'Lora', 'droid',sans-serif;
   font-size: 13px;
   text-rendering: optimizeLegibility;
   width: auto;
@@ -169,6 +169,7 @@ div#main {
 
         ul.header {
           background-color: $light-gray;
+          text-transform: capitalize;
         }
 
         ul {
@@ -178,9 +179,10 @@ div#main {
           li {
             padding: 8px;
             display: inline-block;
+            border-bottom: 1px dotted $gray;
           }
           li.name{ width: 300px; border-right: 1px dotted $gray}
-          li.from{ width: 90px; border-right: 1px dotted $gray}
+          li.from{ width: 110px; border-right: 1px dotted $gray}
           li.to{ width: 90px; }
         }
         .project {
@@ -222,4 +224,8 @@ a {
 
 .clear {
   clear: both;
+}
+
+.skip-link {
+  color: #5599EE;
 }
