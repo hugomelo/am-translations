@@ -2,12 +2,18 @@ Translations::Application.routes.draw do
   devise_for :users
   resources :projects do
     member do
-      get :assign, :constraints => { :project_id => /\d/ }
+      get 'assign_chapters'
+      get 'assign_translators'
+      get 'assign_reviewers'
       get :translate, :constraints => { :project_id => /\d/ }
     end
   end
+
   resources :users
 
+  resources :translators do
+    get :autocomplete_translator_name, :on => :collection
+  end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
