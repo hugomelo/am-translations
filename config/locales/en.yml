@@ -236,6 +236,10 @@ en:
       project_name: 'Project Name'
       translated_from: 'Translated from'
       translated_to: 'Translated to'
+      actions: 'actions'
+      edit: 'edit'
+      delete: 'delete'
+      confirm_delete: 'Deleting this project, remove together all the translation made on it. Do you really want to continue?'
 
   projects:
     create:
@@ -246,6 +250,12 @@ en:
       original_language_of_the_document: "Original language of the document"
       destination_language_of_the_document: "Destination language of the document"
     assign:
+      only_I_translate: 'Let just me as translator by now'
+      go_forward: 'Go forward'
+      assign_translators: 'Assign translators'
+      assign_revisors: 'Assign revisors'
+      didnt_find_translator: "Didn't find a translator?"
+      didnt_find_revisor: "Didn't find a revisor?"
       submit_a_doc: "Submit a document"
       define_chapters: "Define chapters"
       assign_translators: "Assign translators"
