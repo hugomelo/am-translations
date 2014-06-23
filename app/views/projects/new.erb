@@ -1,12 +1,6 @@
 <div id="project">
 
-  <div class=menu>
-    <div class="block selected"> <%= t('.create_a_project') %></div>
-    <div class=block> <%= t('.define_chapters') %></div>
-    <div class=block> <%= t('.assign_translators') %></div>
-    <div class=block> <%= t('.assign_revisors') %></div>
-  </div>
-
+  <%= render partial: 'steps_menu', :locals => {:step => :new} %>
   <%= form_for @project do |f| %>
     <% if @project.errors.any? %>
       <div class=error_messages>

@@ -1,7 +1,9 @@
-<h1><%= t('.assign_contributors') %></h1>
-<div></div>
+<div id="project">
 
-<%= t('get_started_on_translation') %>
-<%= link_to '', translate_project_path(@project), :class => 'arrow-right' %>
+  <h1><%= t('.assign_contributors') %></h1>
 
-<%= debug @project.paragraphs %>
+  <%= render partial: 'steps_menu', :locals => {:step => @step} %>
+
+  <%= render partial: @step.to_s+'_step' %>
+
+</div>
