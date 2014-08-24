@@ -43,6 +43,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+
+    respond_to do |wants|
+      wants.html { redirect_to(projects_url) }
+      wants.js  { }
+    end
+  end
+
   private
   def find_project
     @project = Project.find params[:id] unless params[:id].nil?
