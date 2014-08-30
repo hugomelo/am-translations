@@ -1,8 +1,10 @@
 <div id=dashboard>
   <h1><%= t('users.dashboard.hi') % @user.name %></h1>
 
-  <%= render partial: "projects", locals: {projects: @user.projects, title: t('users.dashboard.projects') } %>
-  <%= render partial: "projects", locals: {projects: @user.reviews, title: t('users.dashboard.reviews') } %>
-  <%= render partial: "projects", locals: {projects: @user.translators, title: t('users.dashboard.translators') } %>
+  <div id="projects">
+    <%= render partial: "shared/projects", locals: {projects: @user.projects, title: t('users.dashboard.projects') } %>
+    <%= render partial: "shared/projects", locals: {projects: @user.reviews, title: t('users.dashboard.reviews') } %>
+    <%= render partial: "shared/projects", locals: {projects: @user.translators, title: t('users.dashboard.translators') } %>
+  </div>
 
 </div>

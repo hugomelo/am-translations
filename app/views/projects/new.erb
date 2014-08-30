@@ -1,6 +1,6 @@
 <div id="project">
 
-  <%= render partial: 'steps_menu', :locals => {:step => :new} %>
+  <%= render partial: 'steps_menu' %>
   <%= form_for @project do |f| %>
     <% if @project.errors.any? %>
       <div class=error_messages>
@@ -18,6 +18,15 @@
 
     <%= f.label :to_language, t('.destination_language_of_the_document') %>
     <%= collection_select :project, :to_language_id, @languages, :id, :name %>
+
+    <%= label :content_type, t('.content_type') %>
+    <div class="radio">
+      <%= f.radio_button :content_type, 'book', checked: true %>
+      <%= f.label :content_type, t('.book') %>
+      <%= f.radio_button :content_type, t('.article') %>
+      <%= f.label :content_type, 'article' %>
+    </div>
+      <div class="clear"></div>
 
     <%= f.submit "submit" %>
 
