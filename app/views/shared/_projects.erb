@@ -9,5 +9,10 @@
     </ul>
     <%= render partial: "shared/project", collection: projects %>
   </div>
+<% else %>
+	<% if defined? can_be_new %>
+  		<h2><%= t('users.dashboard.dont_have_projects') %></h2>
+    	<%= link_to t('users.dashboard.create_one_project'), new_project_path  %>
+    <% end %>
 <% end %>
 
