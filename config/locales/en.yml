@@ -239,9 +239,12 @@ en:
       actions: 'actions'
       edit: 'edit'
       delete: 'delete'
-      confirm_delete: 'Deleting this project, remove together all the translation made on it. Do you really want to continue?'
-
+      confirm_delete: 'Deleting this project, you remove also all the translation made on it. Do you really want to continue?'
+      dont_have_projects: "You still don't have projects"
+      create_one_project: "Create one right now"
   projects:
+    index:
+      projects: "All the projects"
     create:
       project_created: 'Project successfully created.'
     new:
@@ -249,14 +252,29 @@ en:
       choose_a_file: 'Choose a file from which to import the text in the docx format'
       original_language_of_the_document: "Original language of the document"
       destination_language_of_the_document: "Destination language of the document"
-    assign:
+      book: "Livro"
+      article: "Artigo"
+      content_type: 'Content type'
+    steps_menu:
+      create_a_project: 'Create a project'
+      define_chapters: "Define chapters"
+    assign_chapters:
+      assign_chapters: "Please, correct the start of the chapters below."
+      assign_chapters_instructions: "Click on the chapters for opening the text inside it"
+      chapter_number: "Chapter "
+      forward: "Foward"
+      loading_content: 'Loading content..'
+    assign_translators:
+      assign_translators: 'Assign translators'
       only_I_translate: 'Let just me as translator by now'
       go_forward: 'Go forward'
-      assign_translators: 'Assign translators'
-      assign_revisors: 'Assign revisors'
       didnt_find_translator: "Didn't find a translator?"
+      looking_for_users: "Looking for users"
+      no_such_users: "No such users"
+      enter_users: "Enter users for your project"
+      write_email_by_line: "Invite translators to register filling their emails one by line"
+      look_for_registered_users: "Search for registered users to assign"
+    assign_reviewers:
+      assign_reviewers: 'Assign reviewers'
       didnt_find_revisor: "Didn't find a revisor?"
       submit_a_doc: "Submit a document"
-      define_chapters: "Define chapters"
-      assign_translators: "Assign translators"
-      assign_reviewers: "Assign Reviewers"
