@@ -1,0 +1,7 @@
+<% action = params[:action] %>
+<div class=menu>
+  <div class="block <%= "selected" if action == 'new' %>"> <%= t('.create_a_project') %></div>
+  <div class="block <%= "selected" if action == 'assign_chapters' %>"> <%= t('.define_chapters') %></div>
+  <div class="block <%= "selected" if action == 'assign_translators' %>"> <%= t('.assign_translators') %></div>
+  <div class="block <%= "selected" if action == 'assign_reviewers' %>"> <%= t('.assign_reviewers') %></div>
+</div>

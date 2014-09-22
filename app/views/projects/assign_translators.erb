@@ -1,0 +1,22 @@
+<div id="project">
+
+  <%= render partial: 'steps_menu' %>
+
+  <div class="step">
+    <h2> <%= t('.assign_translators') %> </h2>
+    <div><%= t('.look_for_registered_users') %></div>
+    <%= form_for :translator, remote: true do |f| %>
+
+      <% data=@project.translators.map{|t| {:id => t.id, name: "#{t.name} (#{t.email})" }} %>
+      <%= f.text_field :translator_tokens, {
+        :id => 'translator_tokens', "data-pre" => data.to_json } %>
+
+      <h2> <%= t('.didnt_find_translator') %> </h2>
+      <div><%= t('.write_email_by_line') %></div>
+      <%= f.text_area :invited, :id => 'translators_invited', rows: 8 %>
+
+    <% end %>
+  </div>
+  <%= link_to t('projects.assign_translators.go_forward'), assign_translators_project_path(@project), :class => 'arrow-right right' %>
+</div>
+

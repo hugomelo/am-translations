@@ -1,0 +1,18 @@
+<div id="project">
+
+  <%= render partial: 'steps_menu'%>
+
+  <div class="step">
+    <%= t('.assign_reviewers') %>
+    <%= form_for :reviewer, remote: true do |f| %>
+      <%= f.autocomplete_field :reviewer_name, autocomplete_reviewer_name_reviewers_path %>
+    <% end %>
+    <div id="reviewers"> </div>
+    <%= t('.didnt_find_reviewer') %>
+    <%= form_for :reviewer, remote: true do |f| %>
+      <%= f.text_field :reviewer %>
+    <% end %>
+  </div>
+  <%= link_to t('.only_I_translate'), translate_project_path(@project), :class => 'left skip-link' %>
+  <%= link_to '.go_forward', translate_project_path(@project), :class => 'arrow-right right' %>
+

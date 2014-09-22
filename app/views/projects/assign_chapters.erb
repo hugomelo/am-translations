@@ -1,0 +1,31 @@
+<div id="project">
+
+  <%= render partial: 'steps_menu' %>
+
+  <div class="step">
+    <h1><%= t('.assign_chapters') %></h1>
+    <p><%= t('.assign_chapters_instructions') %></p>
+    <div id="chapters">
+      <% chapterWord = 'capítulo' %>
+      <% chapter = 0 %>
+      <% @project.from_paragraphs.select(['paragraphs.id', 'paragraphs.text', 'paragraphs.chapter']).group(:chapter).each do |p| %>
+        <% if chapter != p.chapter and p.text.strip.size > 1 %>
+          <% chapter = p.chapter %>
+          <div class="chapter-number">
+            <%= t('.chapter_number') %>
+            <strong> <%=  chapter.to_s %> </strong>
+          </div>
+          <%= content_tag 'div', class: 'chapter', data: {url: chapter_paragraphs_project_path(@project, p.chapter)}  do %>
+            <%= p.text %>
+          <% end %>
+          <div id="chapter_1_content" style="display:none">
+            <%= t('.loading_content') %>
+          </div>
+          <div class=clear></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to t('.forward'), assign_translators_project_path(@project), :class => 'arrow-right right' %>
+</div>
+
