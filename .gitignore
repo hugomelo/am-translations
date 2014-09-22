@@ -16,6 +16,7 @@
 
 # ignore vim backups
 *.swp
+*.swo
 db/schema.rb
 
 config/database.yml
