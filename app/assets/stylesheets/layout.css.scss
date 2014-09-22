@@ -10,6 +10,13 @@ $green: #3c3;
 $light-gray: #eee;
 $gray: #ccc;
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -99,9 +106,10 @@ header {
 
 #new_user {
 
-  input {
-    width: 150px;
+  input[type=text], input[type=password],input[type=email]{
+    width: 200px;
     margin-bottom: 10px;
+    padding-left: 4px;
   }
   input[type=submit] {
     width: auto;
@@ -164,6 +172,49 @@ div#main {
     }
 
     #dashboard {
+    }
+
+    #chapters {
+      margin-bottom: 20px;
+
+      .chapter-number {
+        padding: 5px;
+        background-color: $light-gray;
+        float: left;
+        width: 80px;
+        margin-left: -100px;
+        margin-right: 10px;
+      }
+      div.chapter {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid $black;
+        cursor: pointer;
+        background-color: #fefefe;
+        margin-bottom: 6px;
+        //@include border-radius(5px);
+
+        &:hover {
+          background-color: #efefef;
+
+        }
+      }
+
+      .paragraph {
+        background-color: #FDFAFD;
+        border: 1px dashed #AAA;
+        margin-bottom: 6px;
+        padding: 5px;
+        width: 100%;
+        display: block;
+
+        &:hover {
+          background-color: #efefef;
+        }
+      }
+    }
+    #projects {
       .projects {
         border: 1px solid $black;
 
@@ -176,8 +227,9 @@ div#main {
           list-style-type: none;
           clear: both;
           width: 100%;
+          white-space: nowrap;
           li {
-            padding: 8px;
+            padding: 8px 8px;
             display: inline-block;
             border-bottom: 1px dotted $gray;
           }
