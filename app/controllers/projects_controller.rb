@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
-  autocomplete :translator, :name
-
-  before_filter :find_project
+  before_filter :find_project, :except => [:new, :index]
 
   def new
     @project = Project.new
@@ -15,7 +13,7 @@ class ProjectsController < ApplicationController
     respond_to do |wants|
       if @project.save
         flash[:notice] = t('projects.create.project_created')
-        wants.html { redirect_to(assign_project_path(@project)) }
+        wants.html { redirect_to(assign_chapters_project_path(@project)) }
       else
         @languages = Language.all
         wants.html { render :action => "new" }
@@ -23,13 +21,22 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def assign
-    steps = [:chapters, :translators, :reviewers]
-    if params[:step].nil? or not steps.include? params[:step]
-      @step = :chapters
-    else
-      @step = params[:step]
+  def assign_chapters
+    redirect_to assign_translators_project_path(@project) unless @project.can_have_chapters?
+  end
+
+  def chapter_paragraphs
+    @paragraphs = @project.from_paragraphs.in_chapter params[:chapter]
+  end
+
+  def assign_translators
+
+    if request.xhr?
+
     end
+  end
+
+  def assign_reviewers
   end
 
   def index
@@ -55,6 +62,11 @@ class ProjectsController < ApplicationController
 
   private
   def find_project
-    @project = Project.find params[:id] unless params[:id].nil?
+    if not params[:id].nil? and Project.exists?(params[:id])
+    @project = Project.find params[:id]
+    else
+      flash[:error] = t("Unable to find model with ID #{params[:id]}!")
+      redirect_to projects_path
+    end
   end
 end

@@ -4,8 +4,10 @@ $orange: #FE9310;
   display: inline-block;
 
   label {
-    display: block;
+    display: inline-block;
     margin-bottom: 5px;
+    margin-top: 3px;
+    font-weight: bold;
   }
 
   input,select {
@@ -16,12 +18,21 @@ $orange: #FE9310;
     width: auto;
   }
 
+  .radio {
+    input, label {
+      float: left;
+    }
+    label {
+      font-weight: normal;
+    }
+    clear: both;
+  }
+
   .arrow-right {
     background-image: image-url('arrow-right.png');
     background-repeat: no-repeat;
-    padding-left: 10px;
-    padding-top: -5px;
-    background-size: 10px 10px;
+    padding-left: 14px;
+    background-size: 12px 12px;
     float:left;
   }
 
@@ -51,4 +62,18 @@ $orange: #FE9310;
     }
 
   }
+
+  .token-input-list {
+  	  margin-bottom: 20px;
+  }
+  li.token-input-token {
+   	background-color: $orange;
+  }
+
+  #translators_invited, #reviewers_invited {
+    width: 400px;
+  }
+}
+div.token-input-dropdown ul li.token-input-selected-dropdown-item {
+  	background-color: rgba($orange, 0.8);
 }

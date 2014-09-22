@@ -3,6 +3,7 @@ Translations::Application.routes.draw do
   resources :projects do
     member do
       get 'assign_chapters'
+      get 'chapter_paragraphs/:chapter', action: :chapter_paragraphs, as: :chapter_paragraphs
       get 'assign_translators'
       get 'assign_reviewers'
       get :translate, :constraints => { :project_id => /\d/ }
@@ -11,9 +12,7 @@ Translations::Application.routes.draw do
 
   resources :users
 
-  resources :translators do
-    get :autocomplete_translator_name, :on => :collection
-  end
+  resources :translators
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

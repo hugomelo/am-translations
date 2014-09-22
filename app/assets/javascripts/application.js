@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require autocomplete-rails
+//= require jquery.tokeninput
+//= require projects
 //= require_tree .
