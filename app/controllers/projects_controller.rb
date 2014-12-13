@@ -1,14 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :find_project, :except => [:new, :create, :index]
 
-  def autocomplete_user_name
-  	  raise 'here'
-  	respond_to do |format|
-  		format.html # index.html.erb
-   	  #format.json { render json: User.token_fields(params[:q]).map {|t| {:id => t.id, name: "#{t.name} &lt;#{t.email}&gt;" }} }
-   	  format.json { render json: User.token_fields(params[:term]).as_json(:only => [:id, :name]) }
-  	end
-  end
   def new
     @project = Project.new
     @languages = Language.all
@@ -55,7 +47,6 @@ class ProjectsController < ApplicationController
   def assign_translators
   	authorize @project
     @translators = @project.translators
-    @chapters_assigned = nil # TODO
     @invitation = Invitation.new
   end
 

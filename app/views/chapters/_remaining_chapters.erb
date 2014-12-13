@@ -1,5 +1,5 @@
 <div>
-  <h1><%= t('chapters._remaining_chapters.choose_the_chapters') % {translator: @user.name} %></h1>
+  <h3><%= t('chapters._remaining_chapters.choose_the_chapters') % {translator: @user.name} %></h3>
   <%= form_tag :translators, remote: true do %>
   	<%= hidden_field_tag :id %>
   	<% @chapters.each do |chapter| %>

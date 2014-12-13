@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  autocomplete :user, :name, full: true#, display_value: :name_email, extra_data: [:email]
 
   before_filter :find_user
 

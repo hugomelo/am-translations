@@ -109,8 +109,6 @@ GEM
       activesupport (= 3.2.21)
       bundler (~> 1.0)
       railties (= 3.2.21)
-    rails3-jquery-autocomplete (1.0.14)
-      rails (>= 3.0)
     railties (3.2.21)
       actionpack (= 3.2.21)
       activesupport (= 3.2.21)
@@ -147,6 +145,10 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-typeahead-rails (0.10.5)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
     tzinfo (0.3.42)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
@@ -170,8 +172,8 @@ DEPENDENCIES
   paperclip
   pundit
   rails (~> 3.2)
-  rails3-jquery-autocomplete
   rb-inotify (>= 0.8.8)
   sass-rails (~> 3.2.3)
   thin
+  twitter-typeahead-rails
   uglifier (>= 1.0.3)

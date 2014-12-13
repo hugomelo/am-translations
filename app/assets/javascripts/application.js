@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require autocomplete-rails
+//= require twitter/typeahead.min
 //= require projects
 //= require_tree .

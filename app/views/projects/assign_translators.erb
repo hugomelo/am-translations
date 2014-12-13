@@ -9,8 +9,7 @@
     <%= form_for :translator, html: {id: 'form-translator'} do |f| %>
 
       <%# data=@translators.map{|t| {:id => t.user.id, name: "#{t.name} &lt;#{t.email}&gt;" }} %>
-      <%= f.autocomplete_field :translator_tokens, autocomplete_user_name_users_path , {
-          :id => 'translator_tokens'} %>
+      <%= f.text_field :translator_tokens, { autofocus: true, id: 'translator_tokens', class: "typeahead", 'data-url' => autocomplete_user_name_users_path } %>
       <div id="translator-chapters" data-url="<%= remaining_translators_document_chapters_path @project.from_document %>" > </div>
       <div id="translator-response"> </div>
       <div class=clear></div>
@@ -19,7 +18,7 @@
 
     <%= form_for [@project, @invitation], remote: true do |f| %>
 
-      <h2 class=action> <%= t('.invite_a_translator') %> </h2>
+      <h4 class=action> <%= t('.invite_a_translator') %> </h4>
       <div class=invitation>
         <div><%= t('.write_email_by_line') %></div>
         <%= f.text_area :emails, :id => 'translators_invited', rows: 8 %>

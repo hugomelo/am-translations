@@ -22,8 +22,7 @@ end
 
 gem 'jquery-rails', '>= 3.0'
 gem 'jquery-ui-rails'
-gem 'rails3-jquery-autocomplete'
-
+gem 'twitter-typeahead-rails' # autocomplete finally (+1 twitter)
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
