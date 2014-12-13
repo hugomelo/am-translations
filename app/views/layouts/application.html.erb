@@ -30,6 +30,7 @@
 
   <% unless notice.blank? %>
     <p class="notice"><%= notice %></p>
+    <script type="text/javascript">$('.notice').delay(2000).fadeOut('slow');</script>
   <% end %>
   <% unless alert.blank? %>
     <p class="alert"><%= alert %></p>
