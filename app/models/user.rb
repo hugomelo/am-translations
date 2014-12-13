@@ -6,19 +6,23 @@ class User < ActiveRecord::Base
 
   ROLES = %w[admin reader]
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :name_email
   validates :name, presence: true
 
   has_many :projects, :foreign_key => :owner_id
-  has_many :translatorships
-  has_many :translation_projects, through: :translatorships, source: :project
-  has_many :reviewerships
-  has_many :review_projects, through: :reviewerships, source: :project
+  has_many :translators
+  has_many :translation_projects, through: :translators, source: :project
+  has_many :reviewers
+  has_many :review_projects, through: :reviewers, source: :project
   has_many :reviews, :foreign_key => :reviewer_id
 
-  scope :token_fields, ->(q) {where("name LIKE ? AND email LIKE ?","%#{q}%","%#{q}%").all}
+  scope :token_fields, ->(q) {where("name LIKE ? OR email LIKE ?","%#{q}%","%#{q}%").all}
 
   def manage
+  end
+
+  def name_email
+    "#{self.name}_#{self.email}"
   end
 
   def has_no_project?
