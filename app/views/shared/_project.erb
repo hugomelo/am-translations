@@ -6,6 +6,8 @@
       <li class=to><%= project.language_name %></li>
       <li class=edit>
         <%= link_to t('users.dashboard.edit'), edit_project_path(project) %>
+        <%= link_to t('users.dashboard.translate'), translate_project_path(project) %>
+        <%= link_to t('users.dashboard.review'), review_project_path(project) %>
         <%= link_to t('users.dashboard.delete'), project_path(project), method: :delete, remote: true, confirm: t('users.dashboard.confirm_delete') %>
       </li>
     </ul>
