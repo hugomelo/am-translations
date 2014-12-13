@@ -1,0 +1,9 @@
+<div>
+  <%= form_for :translators do |f| %>
+  	<%= f.hidden_field :id %>
+  	<% @chapters.each do |chapter| %>
+  	  <%= f.checkboxes "chapters[]", chapter.id %>
+  	<% end %>
+  	<%= f.submit "send" %>
+  <% end %>
+</div>
