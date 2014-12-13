@@ -14,10 +14,10 @@
     <%= f.file_field :source_filename %>
 
     <%= f.label :from_language, t('.original_language_of_the_document') %>
-    <%= collection_select :project, :from_language_id, @languages, :id, :name %>
+    <%= collection_select :project, :from_language_id, @languages, :id, :name_abbrev %>
 
     <%= f.label :to_language, t('.destination_language_of_the_document') %>
-    <%= collection_select :project, :to_language_id, @languages, :id, :name %>
+    <%= collection_select :project, :to_language_id, @languages, :id, :name_abbrev %>
 
     <%= label :content_type, t('.content_type') %>
     <div class="radio">
