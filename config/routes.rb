@@ -1,24 +1,43 @@
 Translations::Application.routes.draw do
   devise_for :users
   resources :projects do
+
     member do
       get 'assign_chapters'
       get 'chapter_paragraphs/:chapter', action: :chapter_paragraphs, as: :chapter_paragraphs
       get 'assign_translators'
       get 'assign_reviewers'
-      get :translate, :constraints => { :project_id => /\d/ }
+      get :translate, constraints: { project_id: /\d/ }
+      get :review, constraints: { project_id: /\d/ }
+    end
+
+    resources :invitations
+    resources :translators do
+      collection do
+        post :assign
+      end
     end
   end
 
-  resources :users
-
+  resources :documents do
+  	resources :chapters do
+  		post :remaining_translators, on: :collection
+  		get :remaining_reviewers, on: :collection
+  	end
+  end
+  resources :users do
+  	get :autocomplete_user_name, on: :collection
+  end
   resources :translators
 
+  resources :invitations do
+    get :confirm
+  end
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
   #     resources :sales do
-  #       get 'recent', :on => :collection
+  #       get 'recent', on: :collection
   #     end
   #   end
 
@@ -32,6 +51,6 @@ Translations::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'users#dashboard'
+   root to: 'users#dashboard'
 
 end
