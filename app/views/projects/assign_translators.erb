@@ -2,18 +2,33 @@
 
   <%= render partial: 'steps_menu' %>
 
-  <div class="step">
+  <div class="step translators">
     <h2> <%= t('.assign_translators') %> </h2>
     <div><%= t('.look_for_registered_users') %></div>
-    <%= form_for :translator, remote: true do |f| %>
 
-      <% data=@project.translators.map{|t| {:id => t.id, name: "#{t.name} (#{t.email})" }} %>
-      <%= f.text_field :translator_tokens, {
-        :id => 'translator_tokens', "data-pre" => data.to_json } %>
+    <%= form_for :translator, html: {id: 'form-translator'} do |f| %>
 
-      <h2> <%= t('.didnt_find_translator') %> </h2>
-      <div><%= t('.write_email_by_line') %></div>
-      <%= f.text_area :invited, :id => 'translators_invited', rows: 8 %>
+      <%# data=@translators.map{|t| {:id => t.user.id, name: "#{t.name} &lt;#{t.email}&gt;" }} %>
+      <%= f.autocomplete_field :translator_tokens, autocomplete_user_name_users_path , {
+          :id => 'translator_tokens'} %>
+      <div id="translator-chapters" data-url="<%= remaining_translators_document_chapters_path @project.from_document %>" > </div>
+      <div id="translator-response"> </div>
+      <div class=clear></div>
+
+    <% end %>
+
+    <%= form_for [@project, @invitation], remote: true do |f| %>
+
+      <h2 class=action> <%= t('.invite_a_translator') %> </h2>
+      <div class=invitation>
+        <div><%= t('.write_email_by_line') %></div>
+        <%= f.text_area :emails, :id => 'translators_invited', rows: 8 %>
+        <%= f.hidden_field :role, value: "translator" %>
+        <div><%= t('.a_mail_will_be_sent') %></div>
+        <%= f.submit t('.send_invitations') %>
+        <div id="invitation-response"> </div>
+      </div>
+      <div class=clear></div>
 
     <% end %>
   </div>

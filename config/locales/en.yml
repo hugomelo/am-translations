@@ -224,6 +224,8 @@ en:
 
   welcome:
     index:
+      sitename: 'am-translations'
+      siteurl: "am-translations.org"
       intro: 'This site is a online tool for translating documents and articles easily'
       intro2: 'You can be assigned to translate a piece of a document while others can, at same time, translate other.'
 
@@ -238,6 +240,8 @@ en:
       translated_to: 'Translated to'
       actions: 'actions'
       edit: 'edit'
+      translate: 'translate'
+      review: 'review'
       delete: 'delete'
       confirm_delete: 'Deleting this project, you remove also all the translation made on it. Do you really want to continue?'
       dont_have_projects: "You still don't have projects"
@@ -268,13 +272,34 @@ en:
       assign_translators: 'Assign translators'
       only_I_translate: 'Let just me as translator by now'
       go_forward: 'Go forward'
-      didnt_find_translator: "Didn't find a translator?"
+      invite_a_translator: "Invite a translator"
       looking_for_users: "Looking for users"
       no_such_users: "No such users"
       enter_users: "Enter users for your project"
       write_email_by_line: "Invite translators to register filling their emails one by line"
       look_for_registered_users: "Search for registered users to assign"
+      a_mail_will_be_sent: "An email will be sent inviting them to join us in the project"
+      apply_translators: "Save these translators"
+      send_invitations: "Send invitations"
+      saved_with_success: "Translators saved successfully!"
+      saving_failed: "Found an error saving new translators.."
+      invited_with_success: "Translators invited! They need to confirm before entering the project"
+      invitation_failed: "Found an error inviting new translators.."
     assign_reviewers:
       assign_reviewers: 'Assign reviewers'
       didnt_find_revisor: "Didn't find a revisor?"
       submit_a_doc: "Submit a document"
+  chapters:
+    _remaining_chapters:
+      choose_the_chapters: "Assign chapters to %{translator}" 
+  invitations:
+    create:
+      invitation_successful: "Invitation was successfully created"
+      someone_have_invited_u: " have just invited you to be a translator of the project "
+      for_applying_to_invitation: "For accepting this invitation, just follow this link and create an account: "
+      thanks_for_joining: "Thanks for joining the project and have a great day!"
+      welcome: "Welcome to "
+  mailer_translator_invitation:
+
+
+

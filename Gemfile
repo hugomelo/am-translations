@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>= 3.2.13'
+gem 'rails', '~> 3.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,7 +22,8 @@ end
 
 gem 'jquery-rails', '>= 3.0'
 gem 'jquery-ui-rails'
-gem 'jquery-tokeninput-rails'
+gem 'rails3-jquery-autocomplete'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -38,15 +39,14 @@ gem 'jquery-tokeninput-rails'
 
 group :development do
   # To use debugger
-  gem 'debugger'
+  #gem 'debugger'
+  gem 'byebug'
   gem 'better_errors', '< 2'
-  gem 'rails-dev-boost', :github => 'thedarkone/rails-dev-boost'
   gem 'rb-inotify', '>= 0.8.8'
 end
 #
 gem 'devise'
-gem 'cancan'
-gem 'role_model'
+gem 'pundit'
 
 # apply to a better server
 gem 'thin'
@@ -54,3 +54,5 @@ gem 'thin'
 gem 'docx'
 
 gem 'paperclip'
+
+gem 'mail'

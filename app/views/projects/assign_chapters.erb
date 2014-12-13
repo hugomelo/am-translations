@@ -6,16 +6,13 @@
     <h1><%= t('.assign_chapters') %></h1>
     <p><%= t('.assign_chapters_instructions') %></p>
     <div id="chapters">
-      <% chapterWord = 'capítulo' %>
-      <% chapter = 0 %>
-      <% @project.from_paragraphs.select(['paragraphs.id', 'paragraphs.text', 'paragraphs.chapter']).group(:chapter).each do |p| %>
-        <% if chapter != p.chapter and p.text.strip.size > 1 %>
-          <% chapter = p.chapter %>
+      <% @project.from_paragraphs.select(['paragraphs.id', 'paragraphs.text', 'paragraphs.chapter_id']).group(:chapter_id).each do |p| %>
+        <% if chapter != p.chapter_id and p.text.strip.size > 1 %>
           <div class="chapter-number">
             <%= t('.chapter_number') %>
-            <strong> <%=  chapter.to_s %> </strong>
+            <strong> <%= p.chapter_id.to_s %> </strong>
           </div>
-          <%= content_tag 'div', class: 'chapter', data: {url: chapter_paragraphs_project_path(@project, p.chapter)}  do %>
+          <%= content_tag 'div', class: 'chapter', data: {url: chapter_paragraphs_project_path(@project, p.chapter_id)}  do %>
             <%= p.text %>
           <% end %>
           <div id="chapter_1_content" style="display:none">
