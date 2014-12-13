@@ -1,0 +1,6 @@
+<% if @invited %>
+		$('#tinvitation-response').html("<p class=success><%= t('projects.assign_translators.invited_with_success') %></p>").fadeIn();
+<% else %>
+		$('#invitation-response').html("<p class=fail><%= t('projects.assign_translators.invitation_failed') %></p>").fadeIn();
+<% end %>
+

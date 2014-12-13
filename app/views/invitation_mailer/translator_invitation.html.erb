@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t('.welcome', siteurl: t('welcome.index.siteurl')) %> </h1>
+    <p>
+      <%= @inviter.name.split(' ').first() + t('.someone_have_invited_u') + @invitation.project.name %><br>
+    </p>
+    <p>
+      <%= t('.for_apply_to_invitation') %>
+      <%= link_to invitation_confirm_url(@invitation) , t('welcome.index.sitename') %>
+    </p>
+    <p><%= t('.thanks_for_joining') %></p>
+  </body>
+</html>
