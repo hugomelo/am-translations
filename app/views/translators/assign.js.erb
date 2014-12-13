@@ -1,0 +1,5 @@
+<% if @success %>
+		$('#translator-response').html("<p class=success><%= t('projects.assign_translators.saved_with_success') %></p>").fadeIn();
+<% else %>
+		$('#translator-response').html("<p class=fail><%= t('projects.assign_translators.saving_failed') %></p>").fadeIn();
+<% end %>
