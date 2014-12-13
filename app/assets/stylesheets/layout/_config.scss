@@ -1,0 +1,17 @@
+//TODO: change these names to conventional (by context and not by value)
+
+$white: #E4E4E4;
+$orange: #FE9310;
+$black: #222;
+$red: #c33;
+$green: #3c3;
+$light-gray: #eee;
+$gray: #ccc;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+

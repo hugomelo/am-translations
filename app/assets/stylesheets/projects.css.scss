@@ -1,7 +1,7 @@
-$orange: #FE9310;
+@import 'layout/config';
+
 #project {
   margin: auto;
-  display: inline-block;
 
   label {
     display: inline-block;
@@ -11,8 +11,9 @@ $orange: #FE9310;
   }
 
   input,select {
-    margin-bottom: 20px;
-    display: block;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  	display: block;
   }
   input[type=submit] {
     width: auto;
@@ -21,9 +22,12 @@ $orange: #FE9310;
   .radio {
     input, label {
       float: left;
+      margin: 5px;
+      margin-right: 0px;
     }
     label {
       font-weight: normal;
+      margin-right: 10px;
     }
     clear: both;
   }
@@ -42,10 +46,13 @@ $orange: #FE9310;
   .right {
     float: right;
   }
+  .action {
+    cursor: pointer;
+  }
 
   .menu {
     background: rgba($orange, 0.8);
-    width: 600px;
+    width: 100%;
     line-height: 50px;
     margin-bottom: 20px;
     color: gray;
@@ -57,15 +64,12 @@ $orange: #FE9310;
 
     .block {
       display: inline-block;
-      margin: 0 20px;
+      margin: 0 7.5%;
 
     }
 
   }
 
-  .token-input-list {
-  	  margin-bottom: 20px;
-  }
   li.token-input-token {
    	background-color: $orange;
   }
@@ -73,7 +77,80 @@ $orange: #FE9310;
   #translators_invited, #reviewers_invited {
     width: 400px;
   }
+
+  #form-translator,#new_invitation {
+  	input[type="submit"]{
+			float: left;
+  	}
+  }
+  .invitation {
+    display: none;
+  }
+  #translator-response,#invitation-response {
+	float: left;
+	margin-left: 10px;
+	font-size: 14px;
+	margin-top:6px;
+  }
+  #translator-response p.success { color: green;}
+  #translator-response p.fail { color: red;}
+  
+  #translator-chapters {
+    clear: both;
+    .chapter-check input {
+      display: inline-block;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
 }
-div.token-input-dropdown ul li.token-input-selected-dropdown-item {
+.ui-helper-hidden-accessible { display:none; }
+ul.ui-autocomplete li {
   	background-color: rgba($orange, 0.8);
+    z-index: 1000;
+    width: 200px;   
+    overflow: hidden;
+    padding: 4px;
+    margin: 0 0 2px;
+    list-style: none;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+}
+
+.ui-menu-item > a.ui-corner-all {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: default;
+}
+
+.ui-state-focus, .ui-state-active {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0088cc;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
 }
