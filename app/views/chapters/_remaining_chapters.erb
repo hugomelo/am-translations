@@ -1,10 +1,11 @@
-<div>
+<div class="chapters-checks">
   <h3><%= t('chapters._remaining_chapters.choose_the_chapters') % {translator: @user.name} %></h3>
-  <%= form_tag :translators, remote: true do %>
-  	<%= hidden_field_tag :id %>
+  <%= form_tag assign_project_translators_path(@project), remote: true do %>
+  	<%= hidden_field_tag :user_id, @user.id %>
+  	<%= hidden_field_tag :project_id, @project.id %>
   	<% @chapters.each do |chapter| %>
   	  <div class=chapter-check>
-  	  	<%= check_box_tag "translator[chapters[]]", chapter.id %><%= chapter.name %>
+  	  	<%= check_box_tag "translator[chapter_ids][]", chapter.id %><%= chapter.name %>
   	  </div>
   	<% end %>
   	<%= submit_tag "send" %>

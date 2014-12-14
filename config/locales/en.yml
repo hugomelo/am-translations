@@ -281,10 +281,12 @@ en:
       a_mail_will_be_sent: "An email will be sent inviting them to join us in the project"
       apply_translators: "Save these translators"
       send_invitations: "Send invitations"
-      saved_with_success: "Translators saved successfully!"
+      saved_with_success: "Translator saved successfully!"
       saving_failed: "Found an error saving new translators.."
       invited_with_success: "Translators invited! They need to confirm before entering the project"
       invitation_failed: "Found an error inviting new translators.."
+      translators_assigned: "Translators assigned"
+      unassigned_chapters: "Unassigned chapters"
     assign_reviewers:
       assign_reviewers: 'Assign reviewers'
       didnt_find_revisor: "Didn't find a revisor?"

@@ -48,6 +48,7 @@ class ProjectsController < ApplicationController
   	authorize @project
     @translators = @project.translators
     @invitation = Invitation.new
+    @unassigned_chapters = Chapter.t_remaining @project.from_document_id
   end
 
   def assign_reviewers

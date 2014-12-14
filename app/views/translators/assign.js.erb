@@ -3,3 +3,5 @@
 <% else %>
 		$('#translator-response').html("<p class=fail><%= t('projects.assign_translators.saving_failed') %></p>").fadeIn();
 <% end %>
+$('#translator-chapters').slideUp();
+$('#translator_tokens').val('');

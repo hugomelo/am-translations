@@ -13,4 +13,8 @@ class Chapter < ActiveRecord::Base
   scope :t_remaining, ->(document_id) {includes(:translators).where('chapters_translators.chapter_id' => nil, document_id: document_id)}
   # remaining chapters for reviewers
   scope :r_remaining, ->(document_id) {includes(:reviewers).where('chapters_reviewers.chapter_id' => nil, document_id: document_id)}
+
+  def order_n_name
+  	  "#{self.order}. #{self.name}"
+  end
 end

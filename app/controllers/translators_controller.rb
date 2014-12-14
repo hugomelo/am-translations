@@ -22,13 +22,9 @@ class TranslatorsController < ApplicationController
   def assign
     if request.xhr?
       @project = Project.find params[:project_id]
-      user_ids = params[:translator][:translator_tokens].split(',')
+      translator = Translator.new(params[:translator])
+      @project.translators << translator
       @success = true
-      translators = []
-      user_ids.each do |user_id|
-        translators << Translator.new(user_id: user_id)
-      end
-      @project.translators = translators
     else
       redirect_to "/notfound"
     end
