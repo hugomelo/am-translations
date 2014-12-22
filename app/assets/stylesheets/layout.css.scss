@@ -8,17 +8,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
 	vertical-align: baseline;
 }
 html, body {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   line-height: 1;
   font-family: 'Lora', 'droid',sans-serif;
-  font-size: 13px;
+	font-size: 100%;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   width: auto;
 
@@ -40,7 +45,7 @@ header {
   background-color: $black;
   color: $white;
   padding: 5px 20px;
-  height: 50px;
+  height: 60px;
   //background: image-url('pratik.png') repeat scroll 0 0 / 20px 20px $black;
   background-color: $black;
 
@@ -127,9 +132,6 @@ body .notice {
   background-color: $green;
   padding: 10px 100px;
   font-size: 16px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 }
 
 body .alert {
@@ -137,9 +139,6 @@ body .alert {
   background-color: $red;
   padding: 10px 100px;
   font-size: 16px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 }
 
 div#main {
@@ -174,9 +173,10 @@ div#main {
         padding: 5px;
         background-color: $light-gray;
         float: left;
-        width: 80px;
-        margin-left: -100px;
-        margin-right: 10px;
+        width: 70px;
+        margin-left: -70px;
+        text-align: right;
+        font-size: 11px;
       }
       div.chapter {
         width: 100%;
@@ -186,7 +186,7 @@ div#main {
         cursor: pointer;
         background-color: #fefefe;
         margin-bottom: 6px;
-        //@include border-radius(5px);
+        @include border-radius(5px);
 
         &:hover {
           background-color: #efefef;
@@ -246,9 +246,6 @@ footer {
   bottom: 0;
   background-color: $orange;
   width: 100%;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko *Gecko*/
-  box-sizing: border-box;         /* Opera/IE 8+ */
   padding: 10px;
 
   a {
