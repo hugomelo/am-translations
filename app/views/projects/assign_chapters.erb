@@ -6,20 +6,24 @@
     <h1><%= t('.assign_chapters') %></h1>
     <p><%= t('.assign_chapters_instructions') %></p>
     <div id="chapters">
-      <% @project.from_paragraphs.select(['paragraphs.id', 'paragraphs.text', 'paragraphs.chapter_id']).group(:chapter_id).each do |p| %>
-        <% if chapter != p.chapter_id and p.text.strip.size > 1 %>
-          <div class="chapter-number">
-            <%= t('.chapter_number') %>
-            <strong> <%= p.chapter_id.to_s %> </strong>
-          </div>
-          <%= content_tag 'div', class: 'chapter', data: {url: chapter_paragraphs_project_path(@project, p.chapter_id)}  do %>
-            <%= p.text %>
+      <% @project.from_document.chapters.each do |chapter| %>
+        <div class="chapter-number">
+          <%= t('.chapter_number') %>
+          <strong> <%= chapter.id %> </strong>
+        </div>
+        <% klass = 'chapter-title' %>
+        <% chapter.paragraphs.each do |p| %>
+          <% if p.text.strip.size > 1 %>
+            <%= content_tag 'div', class: 'chapter '+klass, data: {url: chapter_paragraphs_project_path(@project, chapter.id)}  do %>
+              <%= p.text %>
+            <% end %>
+            <% klass='' %>
+            <div id="chapter_1_content" style="display:none">
+              <%= t('.loading_content') %>
+            </div>
           <% end %>
-          <div id="chapter_1_content" style="display:none">
-            <%= t('.loading_content') %>
-          </div>
-          <div class=clear></div>
         <% end %>
+          <div class=clear></div>
       <% end %>
     </div>
   </div>
