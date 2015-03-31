@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/typeahead.min
+//= require bootstrap-sprockets
 //= require projects
 //= require_tree .
