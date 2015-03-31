@@ -1,7 +1,7 @@
 <div id="project">
 
   <%= render partial: 'steps_menu' %>
-  <%= form_for @project do |f| %>
+  <%= form_for @project, {class: "form-horizontal"} do |f| %>
     <% if @project.errors.any? %>
       <div class=error_messages>
         <% @project.errors.full_messages.each do |msg| %>
@@ -10,25 +10,41 @@
       </div>
     <% end %>
 
-    <%= f.label :source_filename, t('.choose_a_file') %>
-    <%= f.file_field :source_filename %>
+	<div class="form-group col-xs-7">
+    	<%= f.label :name, t('.name'), {class: "control-label col-xs-5"} %>
+    	<div class="col-xs-7">
+    		<%= f.text_field :name, {class: "form-control"} %>
+    	</div>
 
-    <%= f.label :from_language, t('.original_language_of_the_document') %>
-    <%= collection_select :project, :from_language_id, @languages, :id, :name_abbrev %>
+    	<%= f.label :source_filename, t('.choose_a_file'), {class: "control-label col-xs-5"} %>
+    	<div class="col-xs-7">
+    		<%= f.file_field :source_filename, {class: "form-control"}  %>
+    	</div>
 
-    <%= f.label :to_language, t('.destination_language_of_the_document') %>
-    <%= collection_select :project, :to_language_id, @languages, :id, :name_abbrev %>
+    	<%= f.label :from_language, t('.original_language_of_the_document'), {class: "control-label col-xs-5"} %>
+    	<div class="col-xs-7">
+    	<%= collection_select :project, :from_language_id, @languages, :id, :name_abbrev %>
+    	</div>
 
-    <%= label :content_type, t('.content_type') %>
-    <div class="radio">
-      <%= f.radio_button :content_type, 'book', checked: true %>
-      <%= f.label :content_type, t('.book') %>
-      <%= f.radio_button :content_type, t('.article') %>
-      <%= f.label :content_type, 'article' %>
-    </div>
+    	<%= f.label :to_language, t('.destination_language_of_the_document'), {class: "control-label col-xs-5"} %>
+    	<div class="col-xs-7">
+    	<%= collection_select :project, :to_language_id, @languages, :id, :name_abbrev %>
+    	</div>
+
+    	<%= label :content_type, t('.content_type'), {class: "control-label col-xs-5"} %>
+    	<div class="radio col-xs-7">
+      	  <%= f.radio_button :content_type, 'book', checked: true %>
+      	  <%= f.label :content_type, t('.book') %>
+      	  <%= f.radio_button :content_type, t('.article') %>
+      	  <%= f.label :content_type, t('.article') %>
+    	</div>
+
+	</div>
       <div class="clear"></div>
 
-    <%= f.submit "submit" %>
+	<div class="form-group col-xs-7">
+    	<%= f.submit "submit", {class: "btn btn-primary"}  %>
+	</div>
 
   <% end %>
 </div>

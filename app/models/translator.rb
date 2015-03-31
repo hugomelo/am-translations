@@ -7,10 +7,10 @@ class Translator < ActiveRecord::Base
   validates_presence_of :project_id, :user_id
 
   def name
-    self.user.name
+    self.user.blank? ? '' : self.user.name
   end
 
   def email
-    self.user.email
+    self.user.blank? ? '' : self.user.email
   end
 end

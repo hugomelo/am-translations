@@ -2,23 +2,22 @@
 
   <%= render partial: 'steps_menu' %>
 
-  <div class="step translators">
+  <div class="step translators .container">
     <div class=body>
       <div class=head>
         <h2> <%= t('.assign_translators') %> </h2>
         <div><%= t('.look_for_registered_users') %></div>
       </div>
 
-      <%# data=@translators.map{|t| {:id => t.user.id, name: "#{t.name} &lt;#{t.email}&gt;" }} %>
-      <%= text_field_tag :translator_tokens, '', { autofocus: true, class: "typeahead", 'data-url' => autocomplete_user_name_users_path } %>
-      <div id="translator-chapters" data-url="<%= remaining_translators_document_chapters_path @project.from_document %>" > </div>
-      <div id="translator-response"> </div>
+      <%= text_field_tag :person_tokens, '', { autofocus: true, class: "typeahead", 'data-url' => autocomplete_user_name_users_path } %>
+      <div id="person-chapters" data-url="<%= remaining_translators_document_chapters_path @project.from_document %>" > </div>
+      <div id="person-response"> </div>
       <div class=clear></div>
 
       <%= form_for [@project, @invitation], remote: true do |f| %>
 
         <div class=head>
-          <h4 class=action> <%= t('.invite_a_translator') %> </h4>
+          <h4 class=action> <%= t('projects.assign_chapters.invite_someone') %> </h4>
         </div>
         <div class=invitation>
           <div><%= t('.write_email_by_line') %></div>
@@ -31,28 +30,13 @@
         <div class=clear></div>
 
       <% end %>
-      <%= link_to t('projects.assign_translators.go_forward'), assign_translators_project_path(@project), :class => 'arrow-right right' %>
+      <%= link_to t('projects.assign_translators.go_forward'), assign_reviewers_project_path(@project), :class => 'arrow-right right' %>
     </div>
-    <div class=sidebar>
-      <div id="translators">
-        <h3><%= t('.translators_assigned') %></h3>
-        <% @project.translators.each do |translator| %>
-          <%= translator.name %>
-          <ul>
-            <% translator.chapters.each do |chapter| %>
-              <li><%= chapter.order_n_name %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-      <div id="missing-chapters">
-        <h3><%= t('.unassigned_chapters') %></h3>
-        <ul>
-          <% @unassigned_chapters.each do |chapter| %>
-            <li><%= chapter.order_n_name %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="sidebar">
+      <%= render partial: 'sidebar', locals: {type: 'translators'} %>
+    </div>
+    <div class="clear"> </div>
+
     </div>
   </div>
 </div>

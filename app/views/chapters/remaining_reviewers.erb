@@ -1,0 +1,9 @@
+<div>
+  <%= form_for :reviewers do |f| %>
+  	<%= f.hidden_field :id %>
+  	<% @chapters.each do |chapter| %>
+  	  <%= f.check_box "chapters[]", checked_value: chapter.id %>
+  	<% end %>
+  	<%= f.submit "send" %>
+  <% end %>
+</div>

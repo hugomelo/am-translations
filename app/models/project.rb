@@ -7,13 +7,9 @@ class Project < ActiveRecord::Base
   belongs_to :from_document, :class_name => 'Document'
   has_many   :from_paragraphs, through: :from_document, :source => 'paragraphs'
   has_many   :translators
+  has_many   :reviewers
   has_many   :invitations
-  attr_accessible :owner_id, :to_language_id, :from_language_id, :from_document_id, :to_document_id, :source_filename, :name, :content_type, :translator_tokens
-  attr_reader :translator_tokens
-
-  def translator_tokens=(ids)
-  	self.translator_ids = ids.split(",")
-  end
+  attr_accessible :owner_id, :to_language_id, :from_language_id, :from_document_id, :to_document_id, :source_filename, :name, :content_type
 
   #scope :grouped_paragraphs, from_paragraphs.select(['paragraphs.id', 'paragraphs.text', 'paragraphs.chapter']).group(:chapter)
   has_attached_file :source_filename
@@ -43,7 +39,7 @@ class Project < ActiveRecord::Base
       	p_down = p.to_s.downcase
       	chapter_words.each do |word|
       	  if p_down.include? word
-      	  	chapter = Chapter.create document_id: project.from_document_id, order: chapter_order, name: p
+      	  	chapter = Chapter.create document_id: project.from_document_id, order: chapter_order, name: p.text
       	  	chapter_order += 1
       	  	break
       	  end

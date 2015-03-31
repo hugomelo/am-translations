@@ -53,6 +53,9 @@ class ProjectsController < ApplicationController
 
   def assign_reviewers
   	authorize @project
+    @reviewers = @project.reviewers
+    @invitation = Invitation.new
+    @unassigned_chapters = Chapter.r_remaining @project.from_document_id
   end
 
   def destroy

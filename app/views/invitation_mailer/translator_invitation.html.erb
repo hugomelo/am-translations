@@ -9,7 +9,7 @@
       <%= @inviter.name.split(' ').first() + t('.someone_have_invited_u') + @invitation.project.name %><br>
     </p>
     <p>
-      <%= t('.for_apply_to_invitation') %>
+      <%= t('.for_applying_to_invitation') %>
       <%= link_to invitation_confirm_url(@invitation) , t('welcome.index.sitename') %>
     </p>
     <p><%= t('.thanks_for_joining') %></p>

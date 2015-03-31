@@ -9,20 +9,20 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitated=0
+    @invited=0
     @project = Project.find params[:project_id]
     params[:invitation][:emails].split("\n").each do |e|
       e.strip.split(' ').each do |email|
         @invitation = @project.invitations.new(email: email, role: params[:invitation][:role])
         if @invitation.save
-          @invitated += 1
+          @invited += 1
           InvitationMailer.translator_invitation(@invitation, current_user).deliver
         end
       end
     end
 
     respond_to do |format|
-      if @invitated.size > 0
+      if @invited.size > 0
         flash[:notice] = t('invitations.create.invitation_successful')
         format.html { redirect_to(@project) }
         format.js
@@ -32,4 +32,8 @@ class InvitationsController < ApplicationController
       end
     end
   end
-end#DebateNaGlobo
+
+  def confirm
+   debbuger params[:hash]
+  end
+end

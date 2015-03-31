@@ -4,6 +4,6 @@ class InvitationMailer < ActionMailer::Base
   def translator_invitation(invitation, inviter)
     @invitation = invitation
     @inviter = inviter
-    mail(to: @invitation.email, subject: t('invitation_mailer.mailer_translator_invitation'))
+    mail(to: @invitation.email, subject: t('invitation_mailer.translator_invitation.mailer_translator_invitation') % {sitename: t('welcome.index.sitename')})
   end
 end

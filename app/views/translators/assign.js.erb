@@ -1,7 +1,9 @@
 <% if @success %>
-		$('#translator-response').html("<p class=success><%= t('projects.assign_translators.saved_with_success') %></p>").fadeIn();
+		$('#person-response').html("<p class=success><%= t('projects.assign_translators.saved_with_success') %></p>").fadeIn();
 <% else %>
-		$('#translator-response').html("<p class=fail><%= t('projects.assign_translators.saving_failed') %></p>").fadeIn();
+		$('#person-response').html("<p class=fail><%= t('projects.assign_translators.saving_failed') %></p>").fadeIn();
 <% end %>
-$('#translator-chapters').slideUp();
-$('#translator_tokens').val('');
+
+projects.cleanupAddPerson();
+
+$('.sidebar').html("<%= escape_javascript(render partial: 'projects/sidebar', locals: {type: 'translators'}) %>");

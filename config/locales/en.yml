@@ -252,27 +252,30 @@ en:
     create:
       project_created: 'Project successfully created.'
     new:
+      name: Name
       creating_a_project: 'Creating a new project'
       choose_a_file: 'Choose a file from which to import the text in the docx format'
       original_language_of_the_document: "Original language of the document"
       destination_language_of_the_document: "Destination language of the document"
-      book: "Livro"
-      article: "Artigo"
+      book: "Book"
+      article: "Article"
       content_type: 'Content type'
     steps_menu:
       create_a_project: 'Create a project'
       define_chapters: "Define chapters"
+      assign_translators: 'Assign translators'
+      assign_reviewers: 'Assign reviewers'
     assign_chapters:
       assign_chapters: "Please, correct the start of the chapters below."
       assign_chapters_instructions: "Click on the chapters for opening the text inside it"
       chapter_number: "Chapter "
       forward: "Foward"
       loading_content: 'Loading content..'
+      invite_someone: "Invite someone"
     assign_translators:
       assign_translators: 'Assign translators'
       only_I_translate: 'Let just me as translator by now'
       go_forward: 'Go forward'
-      invite_a_translator: "Invite a translator"
       looking_for_users: "Looking for users"
       no_such_users: "No such users"
       enter_users: "Enter users for your project"
@@ -291,17 +294,41 @@ en:
       assign_reviewers: 'Assign reviewers'
       didnt_find_revisor: "Didn't find a revisor?"
       submit_a_doc: "Submit a document"
+      look_for_registered_users: "Search for registered users to assign"
+      a_mail_will_be_sent: "An email will be sent inviting them to join us in the project"
+      apply_translators: "Save these reviewers"
+      send_invitations: "Send invitations"
+      saved_with_success: "Reviewer saved successfully!"
+      saving_failed: "Found an error saving new reviewers.."
+      invited_with_success: "Reviewers invited! They need to confirm before entering the project"
+      invitation_failed: "Found an error inviting new reviewers.."
+      reviewers_assigned: "Reviewers assigned"
+      write_email_by_line: "Invite reviewers to register filling their emails one by line"
+      finish: "Finish project setup"
+    sidebar:
+      no_assignees: "Nobody assigned yet"
+      unassigned_chapters: "Unassigned chapters"
+      translators_assigned: "Translators assigned"
+      reviewers_assigned: "Reviewers assigned"
+  translators:
+    saved_success: 'Translator was successfully created'
+  reviewers:
+    saved_success: 'Reviewers was successfully created'
   chapters:
     _remaining_chapters:
-      choose_the_chapters: "Assign chapters to %{translator}" 
+      apply: "Apply"
+      cancel: "Cancel"
+      choose_the_chapters: "Assign chapters to %{person}" 
   invitations:
     create:
       invitation_successful: "Invitation was successfully created"
+  invitation_mailer:
+    translator_invitation:
+      welcome: "Welcome to %{siteurl}"
       someone_have_invited_u: " have just invited you to be a translator of the project "
       for_applying_to_invitation: "For accepting this invitation, just follow this link and create an account: "
       thanks_for_joining: "Thanks for joining the project and have a great day!"
-      welcome: "Welcome to "
-  mailer_translator_invitation:
+      mailer_translator_invitation: "Invitation to help on %{sitename}"
 
 
 

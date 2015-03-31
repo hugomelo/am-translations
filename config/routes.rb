@@ -17,12 +17,17 @@ Translations::Application.routes.draw do
         post :assign
       end
     end
+    resources :reviewers do
+      collection do
+        post :assign
+      end
+    end
   end
 
   resources :documents do
   	resources :chapters do
   		post :remaining_translators, on: :collection
-  		get :remaining_reviewers, on: :collection
+  		post :remaining_reviewers, on: :collection
   	end
   end
   resources :users do
@@ -31,7 +36,7 @@ Translations::Application.routes.draw do
   resources :translators
 
   resources :invitations do
-    get :confirm
+    get 'confirm/:hash'
   end
   # Sample resource route with more complex sub-resources
   #   resources :products do

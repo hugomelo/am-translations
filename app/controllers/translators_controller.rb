@@ -22,9 +22,14 @@ class TranslatorsController < ApplicationController
   def assign
     if request.xhr?
       @project = Project.find params[:project_id]
-      translator = Translator.new(params[:translator])
-      @project.translators << translator
-      @success = true
+      translator = @project.translators.build(params[:translator])
+      if translator and translator.save
+        @project.translators << translator
+        @unassigned_chapters = Chapter.t_remaining @project.from_document_id
+        @success = true
+      else
+        @success = false
+      end
     else
       redirect_to "/notfound"
     end

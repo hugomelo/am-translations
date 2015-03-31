@@ -1,0 +1,9 @@
+<% if @success %>
+	$('#person-response').html("<p class=success><%= t('projects.assign_reviewers.saved_with_success') %></p>").fadeIn();
+<% else %>
+	$('#person-response').html("<p class=fail><%= t('projects.assign_reviewers.saving_failed') %></p>").fadeIn();
+<% end %>
+
+projects.cleanupAddPerson();
+
+$('.sidebar').html("<%= escape_javascript(render partial: 'projects/sidebar', locals: {type: 'reviewers'}) %>");

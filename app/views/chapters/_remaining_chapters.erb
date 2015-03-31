@@ -1,13 +1,15 @@
 <div class="chapters-checks">
-  <h3><%= t('chapters._remaining_chapters.choose_the_chapters') % {translator: @user.name} %></h3>
-  <%= form_tag assign_project_translators_path(@project), remote: true do %>
-  	<%= hidden_field_tag :user_id, @user.id %>
-  	<%= hidden_field_tag :project_id, @project.id %>
+  <h3><%= t('chapters._remaining_chapters.choose_the_chapters') % {person: @user.name} %></h3>
+  <%= form_tag send('assign_project_'+type+'s_path',@project), { remote: true, class: "form-inline"} do %>
+  	<%= hidden_field_tag type+"[user_id]", @user.id %>
   	<% @chapters.each do |chapter| %>
   	  <div class=chapter-check>
-  	  	<%= check_box_tag "translator[chapter_ids][]", chapter.id %><%= chapter.name %>
+  	  	<%= check_box_tag type+"[chapter_ids][]", chapter.id %><%= chapter.name %>
   	  </div>
   	<% end %>
-  	<%= submit_tag "send" %>
+    <div class="form-group">
+      <%= submit_tag t("chapters._remaining_chapters.apply"), {class: "btn btn-primary form-control"} %>
+      <%= submit_tag t("chapters._remaining_chapters.cancel"), {class: "form-control cancel-button"} %>
+    </div>
   <% end %>
 </div>

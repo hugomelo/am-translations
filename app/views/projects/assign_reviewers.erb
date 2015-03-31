@@ -1,18 +1,43 @@
 <div id="project">
 
-  <%= render partial: 'steps_menu'%>
+  <%= render partial: 'steps_menu' %>
 
-  <div class="step">
-    <%= t('.assign_reviewers') %>
-    <%= form_for :reviewer, remote: true do |f| %>
-      <%= f.autocomplete_field :reviewer_name, autocomplete_reviewer_name_reviewers_path %>
-    <% end %>
-    <div id="reviewers"> </div>
-    <%= t('.didnt_find_reviewer') %>
-    <%= form_for :reviewer, remote: true do |f| %>
-      <%= f.text_field :reviewer %>
-    <% end %>
+  <div class="step reviewers">
+    <div class=body>
+      <div class=head>
+        <h2> <%= t('.assign_reviewers') %> </h2>
+        <div><%= t('.look_for_registered_users') %></div>
+      </div>
+
+      <%= text_field_tag :person_tokens, '', { autofocus: true, class: "typeahead", 'data-url' => autocomplete_user_name_users_path } %>
+      <div id="person-chapters" data-url="<%= remaining_reviewers_document_chapters_path @project.from_document %>" > </div>
+      <div id="person-response"> </div>
+      <div class=clear></div>
+
+      <%= form_for [@project, @invitation], remote: true do |f| %>
+
+        <div class=head>
+          <h4 class=action> <%= t('projects.assign_chapters.invite_someone') %> </h4>
+        </div>
+        <div class=invitation>
+          <div><%= t('.write_email_by_line') %></div>
+          <%= f.text_area :emails, :id => 'reviewers_invited', rows: 8 %>
+          <%= f.hidden_field :role, value: "reviewer" %>
+          <div><%= t('.a_mail_will_be_sent') %></div>
+          <%= f.submit t('.send_invitations') %>
+          <div id="invitation-response"> </div>
+        </div>
+        <div class=clear></div>
+
+      <% end %>
+      <%= link_to t('projects.assign_reviewers.finish'), project_path(@project), :class => 'arrow-right right' %>
+    </div>
+    <div class="sidebar">
+      <%= render partial: 'sidebar', locals: {type: 'reviewers'} %>
+    </div>
+    <div class="clear"> </div>
+
+    </div>
   </div>
-  <%= link_to t('.only_I_translate'), translate_project_path(@project), :class => 'left skip-link' %>
-  <%= link_to '.go_forward', translate_project_path(@project), :class => 'arrow-right right' %>
+</div>
 

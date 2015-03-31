@@ -12,25 +12,19 @@
   }
 
   input,select {
-  	margin-top: 20px;
   	margin-bottom: 20px;
-  	display: block;
   }
   input[type=submit] {
     width: auto;
   }
 
   .radio {
-    input, label {
-      float: left;
-      margin: 5px;
-      margin-right: 0px;
-    }
     label {
-      font-weight: normal;
-      margin-right: 10px;
+      margin-right: 5px;
     }
-    clear: both;
+    input {
+      margin-left: 0px;
+    }
   }
 
   .arrow-right {
@@ -89,7 +83,7 @@
 
   }
 
-  #translator_tokens {
+  #person_tokens {
     margin-bottom: 10px;
   }
 
@@ -120,16 +114,20 @@
     display: none;
     padding: 0 15px;
   }
-  #translator-response,#invitation-response {
+  #person-response,#invitation-response {
 	float: left;
 	margin-left: 10px;
 	font-size: 14px;
 	margin-top:6px;
   }
-  #translator-response p.success { color: green;}
-  #translator-response p.fail { color: red;}
+  #person-response,#invitation-response {
+    p.success { color: green;}
+    p.fail { color: red;}
+
+    margin-bottom: 10px;
+  }
   
-  #translator-chapters {
+  #person-chapters {
     clear: both;
     .chapter-check input {
       display: inline-block;
@@ -144,7 +142,7 @@
     padding: 15px;
   }
 
-  #translators,#missing-chapters {
+  #translators,#reviewers,#missing-chapters {
     @include border-radius(8px);
     border: 1px solid $border;
     padding: 15px;
@@ -152,6 +150,7 @@
 
     ul {
       list-style-type: none;
+      margin-bottom: 10px;
     }
   }
   .body {

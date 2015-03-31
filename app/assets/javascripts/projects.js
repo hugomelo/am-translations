@@ -2,7 +2,6 @@ projects = {
 	loadChapter: function() {
 		var url = $(this).data('url');
 		var content = $(this).next();
-		console.log(content.html().trim().length);
 		if (content.html().trim().length < 20) {
 			content.load(url, function(data){
 				content.fadeIn('slow');
@@ -18,11 +17,11 @@ projects = {
 	},
 
 	loadAvailableChapters: function(event, chosen, name) {
-		url = $('#translator-chapters').data('url');
-		$('#translator-chapters')
-			.hide();
+		url = $('#person-chapters').data('url');
+		$('#person-chapters').hide();
+
 		$.post(url, {user_id: chosen.id}, function(data) {
-			$('#translator-chapters').html(data).slideToggle();
+			$('#person-chapters').html(data).slideToggle();
 		});
 	},
 
@@ -30,26 +29,37 @@ projects = {
 		var engine = new Bloodhound({
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
-		//prefetch: $('#translator_tokens').data('url'),
-		remote: $('#translator_tokens').data('url')+"?q=%QUERY"
+		//prefetch: $('#person_tokens').data('url'),
+		remote: $('#person_tokens').data('url')+"?q=%QUERY"
 		});
 
 		engine.initialize();
 
-		$('#translator_tokens').typeahead(null, {
+		$('#person_tokens').typeahead(null, {
 			name: 'translators',
 			displayKey: 'label',
 			source: engine.ttAdapter()
 		}); 
+	},
+
+	cleanupAddPerson: function(event) {
+		if (event)
+			event.preventDefault();
+		$('#person-chapters').slideUp();
+		$('#person_tokens').val("");
+		$('html, body').animate({ scrollTop: $(".head").offset().top },400);
+		return false;
 	}
 
 };
 
 
 jQuery(document).ready(function() {
-	$('#translator_tokens').on('typeahead:selected', function(event, chosen, name){
+	$('#person_tokens').on('typeahead:selected', function(event, chosen, name){
 		projects.loadAvailableChapters(event, chosen, name);
 	});
+
+	$(document).on('click','.cancel-button',projects.cleanupAddPerson);
 
 	projects.activateTypeahead();
 

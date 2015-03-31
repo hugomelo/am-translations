@@ -1,0 +1,23 @@
+  <div id="<%= type %>">
+    <h3><%= t('.'+type+'_assigned') %></h3>
+    <% people = @project.send(type, true) %>
+    <% if people.blank? %>
+       <%= t('.no_assignees') %>
+  	<% end %>
+    <% people.each do |person| %>
+      <%= person.name %>
+      <ul>
+        <% person.chapters.each do |chapter| %>
+          <li><%= chapter.order_n_name %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div id="missing-chapters">
+    <h3><%= t('.unassigned_chapters') %></h3>
+    <ul>
+      <% @unassigned_chapters.each do |chapter| %>
+        <li><%= chapter.order_n_name %></li>
+      <% end %>
+    </ul>
+  </div>
