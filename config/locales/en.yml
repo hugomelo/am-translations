@@ -335,6 +335,13 @@ en:
       for_applying_to_invitation: "For accepting this invitation, just follow this link and create an account: "
       thanks_for_joining: "Thanks for joining the project and have a great day!"
       mailer_translator_invitation: "Invitation to help on %{sitename}"
+    reviewer_invitation:
+      welcome: "Welcome to %{siteurl}"
+      someone_have_invited_u: " have just invited you to be a reviewer of the project "
+      for_applying_to_invitation: "For accepting this invitation, just follow this link and create an account: "
+      thanks_for_joining: "Thanks for joining the project and have a great day!"
+      mailer_reviewer_invitation: "Invitation to help on %{sitename}"
+      after_joining: "After joining, you got to wait for the admin to add chapters for you. Your work follows the translator's one, so it can still last some time." 
     notice_admin_of_new_user:
       new_user_activated: "New invited user activated"
       hi: "Hi!"

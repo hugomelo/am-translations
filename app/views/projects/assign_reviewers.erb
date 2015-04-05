@@ -24,7 +24,7 @@
           <%= f.text_area :emails, :id => 'people_invited', rows: 8 %>
           <%= f.hidden_field :role, value: "reviewer" %>
           <div><%= t('.a_mail_will_be_sent') %></div>
-          <%= f.submit t('.send_invitations') %>
+          <%= f.submit t('.send_invitations'), class: "btn btn-primary" %>
           <div id="invitation-response"> </div>
         </div>
         <div class=clear></div>

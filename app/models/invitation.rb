@@ -10,7 +10,7 @@ class Invitation < ActiveRecord::Base
   scope :is_invited?, lambda { |invitation| where(email: invitation.email, project_id: invitation.project_id, role: invitation.role) }
   scope :find_tokens, lambda { |token| where(token: token) }
 
-  after_initialize :generate_has, :if => :new_record?
+  after_initialize :generate_hash, :if => :new_record?
   def generate_hash
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
