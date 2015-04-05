@@ -7,7 +7,17 @@ class Project < ActiveRecord::Base
   belongs_to :from_document, :class_name => 'Document'
   has_many   :from_paragraphs, through: :from_document, :source => 'paragraphs'
   has_many   :translators
+  has_many   :translators_users, through: :translators, source: 'user' do
+    def <<(new_item)
+      super( Array(new_item) - proxy_association.owner.translators_users )
+    end
+  end
   has_many   :reviewers
+  has_many   :reviewers_users, through: :reviewers, source: 'user' do
+    def <<(new_item)
+      super( Array(new_item) - proxy_association.owner.reviewers_users )
+    end
+  end
   has_many   :invitations
   attr_accessible :owner_id, :to_language_id, :from_language_id, :from_document_id, :to_document_id, :source_filename, :name, :content_type
 
