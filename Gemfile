@@ -41,6 +41,7 @@ group :development do
   # To use debugger
   #gem 'debugger'
   gem 'byebug'
+  gem 'binding_of_caller'
   gem 'better_errors', '< 2'
   gem 'rb-inotify', '>= 0.8.8'
 end
