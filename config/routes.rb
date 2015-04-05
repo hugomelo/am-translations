@@ -12,6 +12,7 @@ Translations::Application.routes.draw do
     end
 
     resources :invitations
+
     resources :translators do
       collection do
         post :assign
@@ -24,6 +25,9 @@ Translations::Application.routes.draw do
     end
   end
 
+  put 'invitations/edit_user', to: "invitations#edit_user"
+  match "activate/invitation/:token", to: "invitations#confirm", as: "invitation_confirm", via: :get
+
   resources :documents do
   	resources :chapters do
   		post :remaining_translators, on: :collection
@@ -35,9 +39,6 @@ Translations::Application.routes.draw do
   end
   resources :translators
 
-  resources :invitations do
-    get 'confirm/:hash'
-  end
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments

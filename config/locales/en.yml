@@ -322,6 +322,12 @@ en:
   invitations:
     create:
       invitation_successful: "Invitation was successfully created"
+    confirm:
+      invalid_token: "The link you clicked is invalid. Please, select it on mail, copy and open it again"
+      notice_account_activated: "User created activated successfully. Please edit your profile now."
+    edit_user:
+      user_profile_saved: "The user profile was saved!"
+      not_loggedin: "You are not logged in, Please, login before editing your profile."
   invitation_mailer:
     translator_invitation:
       welcome: "Welcome to %{siteurl}"
@@ -329,6 +335,12 @@ en:
       for_applying_to_invitation: "For accepting this invitation, just follow this link and create an account: "
       thanks_for_joining: "Thanks for joining the project and have a great day!"
       mailer_translator_invitation: "Invitation to help on %{sitename}"
+    notice_admin_of_new_user:
+      new_user_activated: "New invited user activated"
+      hi: "Hi!"
+      has_just_confirmed: "%{user} has just confirmed the invitation to enter %{project}." 
+      please_assign_chapters: "Please, assign chapters for him right now clicking the following link."
+      thanks: "Thanks!"
 
 
 

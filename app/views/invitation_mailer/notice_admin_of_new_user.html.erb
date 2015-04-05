@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t('.hi') %> </h1>
+    <p>
+      <%= t('.has_just_confirmed', user: @invited.name.split(' ').first(), project: @project.name) %><br>
+    </p>
+    <p>
+      <%= t('.please_assign_chapters') %>
+      <%= link_to "Click here", assign_chapters_project_url(@project) %>
+    </p>
+    <p><%= t('.thanks') %></p>
+  </body>
+</html>
+

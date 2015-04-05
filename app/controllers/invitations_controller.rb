@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:confirm]
+
   def new
     @invitation = Invitation.new
 
@@ -14,7 +16,7 @@ class InvitationsController < ApplicationController
     params[:invitation][:emails].split("\n").each do |e|
       e.strip.split(' ').each do |email|
         @invitation = @project.invitations.new(email: email, role: params[:invitation][:role])
-        if @invitation.save
+        if Invitation.was_invited? @invitation or @invitation.save
           @invited += 1
           InvitationMailer.translator_invitation(@invitation, current_user).deliver
         end
@@ -33,7 +35,51 @@ class InvitationsController < ApplicationController
     end
   end
 
+  # Confirm token sent by mail as an invitation to project
   def confirm
-   debbuger params[:hash]
+    (redirect_to(root_url); return) unless params[:token].present?
+    @invitation = Invitation.find_token(params[:token].to_s)
+
+    unless @invitation
+      redirect_to root_url, flash: {error: t('invitations.confirm.invalid_token')}
+      return
+    end
+
+    @user = User.where(email: @invitation.email).first
+    @project = Project.find @invitation.project_id
+
+    if @user.present?
+      @project.send(@invitation.role+"s_user_ids") << @user.id
+      sign_in @user
+      redirect_to(root_url)
+      return
+    end
+
+    name = @invitation.email.split('@').first.capitalize
+    pass = SecureRandom.hex(8)
+    @user = User.new(email: @invitation.email, name: name, password: pass, password_confirmation: pass)
+    @user.confirm!
+
+    if @user.save
+      @project.send(@invitation.role+"s_user_ids") << @user.id
+      @project.save
+      sign_in @user
+      @invitation.destroy
+      InvitationMailer.notice_admin_of_new_user(@project, @user).deliver
+      flash[:notice] = t("invitations.confirm.notice_account_activated")
+      return
+    end
+    redirect_to(root_url)
   end
+
+  def edit_user
+    if current_user
+      current_user.update_attributes params[:user]
+      flash[:notice] = t("invitations.edit_user.user_profile_saved")
+    else
+      flash[:error] = t("invitations.edit_user.not_loggedin")
+    end
+    redirect_to root_path
+  end
+
 end

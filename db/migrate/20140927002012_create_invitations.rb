@@ -3,7 +3,7 @@ class CreateInvitations < ActiveRecord::Migration
     create_table :invitations do |t|
       t.string :name
       t.string :email
-      t.string :confirmation_hash
+      t.string :token
       t.integer :project_id
       t.string :role
 

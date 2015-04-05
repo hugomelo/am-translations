@@ -10,7 +10,7 @@
     </p>
     <p>
       <%= t('.for_applying_to_invitation') %>
-      <%= link_to invitation_confirm_url(@invitation) , t('welcome.index.sitename') %>
+      <%= link_to invitation_confirm_url(@invitation.token) , t('welcome.index.sitename') %>
     </p>
     <p><%= t('.thanks_for_joining') %></p>
   </body>
