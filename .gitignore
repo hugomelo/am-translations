@@ -20,8 +20,10 @@
 db/schema.rb
 
 config/database.yml
+config/initializers/setup_mail.rb
 doc/translations.mwb.bak
 TODO
 menu
+tags
 
 public/system
