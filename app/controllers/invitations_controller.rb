@@ -28,7 +28,6 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invited.size > 0
-        flash[:notice] = t('invitations.create.invitation_successful')
         format.html { redirect_to(@project) }
         format.js
       else
@@ -61,7 +60,7 @@ class InvitationsController < ApplicationController
     end
 
     # include in the project as :role
-    @project.send(@invitation.role+"s_user_ids") << @user.id
+    @project.send(@invitation.role+"s_users") << @user
     @project.save
 
     sign_in @user

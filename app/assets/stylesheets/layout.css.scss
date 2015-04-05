@@ -209,10 +209,14 @@ div#main {
     }
     #projects {
       .projects {
-        border: 1px solid $black;
+        border: 1px solid $header-2;
+        @include border-top-right-radius(15px);
+        @include border-bottom-left-radius(15px);
+        margin-bottom: 15px;
 
         ul.header {
-          background-color: $light-gray;
+          @include border-top-right-radius(15px);
+          background-color: $header-2;
           text-transform: capitalize;
         }
 
@@ -221,14 +225,14 @@ div#main {
           clear: both;
           width: 100%;
           white-space: nowrap;
+          border-bottom: 1px dotted $header-2;
           li {
             padding: 8px 8px;
             display: inline-block;
-            border-bottom: 1px dotted $gray;
           }
-          li.name{ width: 300px; border-right: 1px dotted $gray}
-          li.from{ width: 110px; border-right: 1px dotted $gray}
-          li.to{ width: 90px; }
+          li.name{ width: 300px; border-right: 1px dotted $header-2}
+          li.from{ width: 110px; border-right: 1px dotted $header-2}
+          li.to{ width: 90px; border-right: 1px dotted $header-2 }
         }
         .project {
         }
