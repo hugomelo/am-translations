@@ -9,6 +9,7 @@ Translations::Application.routes.draw do
       get 'assign_reviewers'
       get :translate, constraints: { project_id: /\d/ }
       get :review, constraints: { project_id: /\d/ }
+      get :export
     end
 
     resources :invitations

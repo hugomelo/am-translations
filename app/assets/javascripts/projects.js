@@ -49,6 +49,10 @@ projects = {
 		$('#person_tokens').val("");
 		$('html, body').animate({ scrollTop: $(".head").offset().top },400);
 		return false;
+	},
+
+	exportDocument: function() {
+		alert("Not implemented yet");
 	}
 
 };

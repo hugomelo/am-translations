@@ -5,10 +5,11 @@
       <li class=from><%= project.orig_language_name %></li>
       <li class=to><%= project.language_name %></li>
       <li class=edit>
-        <%= link_to t('users.dashboard.edit'), edit_project_path(project) %>
-        <%= link_to t('users.dashboard.translate'), translate_project_path(project) %>
-        <%= link_to t('users.dashboard.review'), review_project_path(project) %>
-        <%= link_to t('users.dashboard.delete'), project_path(project), method: :delete, remote: true, confirm: t('users.dashboard.confirm_delete') %>
+        <%= link_to t('users.dashboard.edit'), edit_project_path(project) if type == 'admin' %>
+        <%= link_to t('users.dashboard.translate'), translate_project_path(project)  if type == 'translation' %>
+        <%= link_to t('users.dashboard.review'), review_project_path(project) if type == 'review'  %>
+        <%= link_to_function t('users.dashboard.export'), "projects.exportDocument()",{data: {url: export_project_path(project)} } %>
+        <%= link_to t('users.dashboard.delete'), project_path(project), method: :delete, remote: true, confirm: t('users.dashboard.confirm_delete') if type == 'admin'  %>
       </li>
     </ul>
     <div class=clear></div>

@@ -1,20 +1,32 @@
 class ProjectPolicy < ApplicationPolicy
+  attr_reader :user, :project
+
+	def initialize(user, project)
+		@user = user
+		@project = project
+	end
   def assign_translators?
-      true
+    project.owner == user
   end
   def assign_reviewers?
-      true
+    project.owner == user
   end
   def assign_chapters?
-      true
+    project.owner == user
+  end
+  def translate?
+    user.translation_projects.include? project or project.owner == user
+  end
+  def review?
+    user.review_projects.include? project or project.owner == user
   end
 
   def create?
-    user.admin?
+    project.owner == user
   end
 
   def update?
-    record.owner == user
+    project.owner == user
   end
 
   class Scope < Scope

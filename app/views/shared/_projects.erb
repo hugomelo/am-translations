@@ -7,7 +7,7 @@
       <li class=to><%= t('users.dashboard.translated_to') %></li>
       <li class=edit><%= t('users.dashboard.actions') %></li>
     </ul>
-    <%= render partial: "shared/project", collection: projects %>
+    <%= render partial: "shared/project", collection: projects, locals: {type: type} %>
   </div>
 <% end %>
 

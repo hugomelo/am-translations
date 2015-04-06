@@ -58,6 +58,14 @@ class ProjectsController < ApplicationController
     @unassigned_chapters = Chapter.r_remaining @project.from_document_id
   end
 
+  def translate
+  	authorize @project
+  end
+
+  def review
+  	authorize @project
+  end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy

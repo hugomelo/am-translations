@@ -6,9 +6,9 @@
   	  	  <h2><%= t('users.dashboard.dont_have_projects') %></h2>
       	  <%= link_to t('users.dashboard.create_one_project'), new_project_path  %>
   	  <% else %>
-    	<%= render partial: "shared/projects", locals: {projects: @user.projects, title: t('users.dashboard.projects'), can_be_new: true } %>
-    	<%= render partial: "shared/projects", locals: {projects: @user.review_projects, title: t('users.dashboard.reviews') } %>
-    	<%= render partial: "shared/projects", locals: {projects: @user.translation_projects, title: t('users.dashboard.translators') } %>
+    	<%= render partial: "shared/projects", locals: {projects: @user.projects, title: t('users.dashboard.projects'), can_be_new: true, type: 'admin' } %>
+    	<%= render partial: "shared/projects", locals: {projects: @user.translation_projects, title: t('users.dashboard.translators'), type: 'translation' } %>
+    	<%= render partial: "shared/projects", locals: {projects: @user.review_projects, title: t('users.dashboard.reviewers'), type: 'review' } %>
   	  <% end %>
 
   </div>

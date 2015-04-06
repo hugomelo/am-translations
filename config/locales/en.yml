@@ -233,8 +233,8 @@ en:
     dashboard:
       hi: 'Hi %s! This is your dashboard.'
       projects: "Projects you've created"
-      reviews: "Projects you are assigned to review"
-      translations: "Projects you are assigned to translate"
+      reviewers: "Projects you are assigned to review"
+      translators: "Projects you are assigned to translate"
       project_name: 'Project Name'
       translated_from: 'Translated from'
       translated_to: 'Translated to'
@@ -242,6 +242,7 @@ en:
       edit: 'edit'
       translate: 'translate'
       review: 'review'
+      export: 'export'
       delete: 'delete'
       confirm_delete: 'Deleting this project, you remove also all the translation made on it. Do you really want to continue?'
       dont_have_projects: "You still don't have projects"
@@ -310,6 +311,8 @@ en:
       unassigned_chapters: "Unassigned chapters"
       translators_assigned: "Translators assigned"
       reviewers_assigned: "Reviewers assigned"
+    translate:
+      translating: "Translating project %{project}"
   translators:
     saved_success: 'Translator was successfully created'
   reviewers:
@@ -335,6 +338,7 @@ en:
       for_applying_to_invitation: "For accepting this invitation, just follow this link and create an account: "
       thanks_for_joining: "Thanks for joining the project and have a great day!"
       mailer_translator_invitation: "Invitation to help on %{sitename}"
+      click_here: "Click here"
     reviewer_invitation:
       welcome: "Welcome to %{siteurl}"
       someone_have_invited_u: " have just invited you to be a reviewer of the project "
@@ -342,6 +346,7 @@ en:
       thanks_for_joining: "Thanks for joining the project and have a great day!"
       mailer_reviewer_invitation: "Invitation to help on %{sitename}"
       after_joining: "After joining, you got to wait for the admin to add chapters for you. Your work follows the translator's one, so it can still last some time." 
+      click_here: "Click here"
     notice_admin_of_new_user:
       new_user_activated: "New invited user activated"
       hi: "Hi!"
