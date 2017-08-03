@@ -25,6 +25,9 @@ gem 'jquery-ui-rails'
 gem 'twitter-typeahead-rails' # autocomplete finally (+1 twitter)
 gem 'bootstrap-sass'
 
+# Pagination
+gem 'kaminari'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

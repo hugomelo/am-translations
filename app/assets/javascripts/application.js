@@ -16,4 +16,5 @@
 //= require twitter/typeahead.min
 //= require bootstrap-sprockets
 //= require projects
+//= require jquery.infinitescroll
 //= require_tree .

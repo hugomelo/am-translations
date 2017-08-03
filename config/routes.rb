@@ -35,6 +35,8 @@ Translations::Application.routes.draw do
   		post :remaining_reviewers, on: :collection
   	end
   end
+  resources :paragraphs
+
   resources :users do
   	get :autocomplete_user_name, on: :collection
   end

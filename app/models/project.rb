@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   belongs_to :to_document, :class_name => 'Document'
   belongs_to :from_document, :class_name => 'Document'
   has_many   :from_paragraphs, through: :from_document, :source => 'paragraphs'
+  has_many   :to_paragraphs, through: :to_document, :source => 'paragraphs'
   has_many   :translators
   has_many   :translators_users, through: :translators, source: 'user' do
     def <<(new_item)

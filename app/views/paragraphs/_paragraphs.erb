@@ -1,0 +1,6 @@
+<% @t_paragraphs.each_with_index do |paragraph, index| %>
+  <% next if @f_paragraphs[index].text.strip.size == 0 %>
+  <% ind = index %>
+  <%= render partial: "paragraphs/paragraph", locals: {index: ind, paragraph: paragraph} %>
+<% end %>
+

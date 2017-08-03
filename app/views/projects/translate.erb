@@ -1,0 +1,10 @@
+<div id="project">
+
+</div><h1><%= t('.translating', {project: @project.name}) %></h1>
+
+<div id="paragraphs">
+  <div class="page">
+    <%= render 'paragraphs/paragraphs' %>
+  </div>
+</div>
+<%= paginate @f_paragraphs %>

@@ -60,6 +60,9 @@ class ProjectsController < ApplicationController
 
   def translate
   	authorize @project
+    #page = params[:page].present? ? params[:page] : 1
+    @f_paragraphs = @project.from_paragraphs.page(params[:page])
+    @t_paragraphs = @project.to_paragraphs.page(params[:page])
   end
 
   def review

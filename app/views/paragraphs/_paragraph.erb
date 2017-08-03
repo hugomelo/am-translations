@@ -1,0 +1,12 @@
+<div class="paragraph-row col-xs-12">
+  <div class="row">
+    <p class="from-paragraph col-xs-6">
+      <%= @f_paragraphs[index].text %>
+    </p>
+    <div class="col-xs-6">
+      <%= form_for paragraph,remote: true do |f| %>
+        <%= f.text_area :text, class: "form-control" %>
+      <% end  %>
+    </div>
+  </div>
+</div>
