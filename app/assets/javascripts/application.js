@@ -11,10 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery-ui
-//= require twitter/typeahead.min
 //= require bootstrap-sprockets
 //= require projects
-//= require jquery.infinitescroll
+//# require jquery.infinitescroll
 //= require_tree .
