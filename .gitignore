@@ -29,3 +29,6 @@ tags
 public/system
 /public/packs
 /node_modules
+
+.byebug_history
+.env
