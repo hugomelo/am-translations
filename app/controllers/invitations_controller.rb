@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:confirm]
+  skip_before_action :authenticate_user!, raise: false, only: [:confirm]
 
   def new
     @invitation = Invitation.new
@@ -13,12 +13,13 @@ class InvitationsController < ApplicationController
   # create or resend invitation mail
   def create
     @invited=0
-    @project = Project.find params[:project_id]
-    params[:invitation][:emails].split("\n").each do |e|
+    @project = Project.find params.permit(:project_id)
+    role= invitation_params[:role]
+    invitation_params[:emails].split("\n").each do |e|
       e.strip.split(' ').each do |email|
-        @invitation = Invitation.where(email: email, role:  params[:invitation][:role], project_id: @project.id).first
+        @invitation = Invitation.where(email: email, role: role, project_id: @project.id).first
         unless @invitation.present?
-          @invitation = @project.invitations.new(email: email, role: params[:invitation][:role])
+          @invitation = @project.invitations.new(email: email, role: role)
           next unless @invitation.save
         end
         @invited += 1
@@ -39,8 +40,8 @@ class InvitationsController < ApplicationController
 
   # Confirm token sent by mail as an invitation to project
   def confirm
-    (redirect_to(root_url); return) unless params[:token].present?
-    @invitation = Invitation.find_token(params[:token].to_s)
+    (redirect_to(root_url); return) unless params.permit(:token).present?
+    @invitation = Invitation.find_token(params.permit(:token).to_s)
 
     unless @invitation
       redirect_to root_url, flash: {error: t('invitations.confirm.invalid_token')}
@@ -71,12 +72,18 @@ class InvitationsController < ApplicationController
 
   def edit_user
     if current_user
-      current_user.update_attributes params[:user]
+      current_user.update_attributes params.permit(:user)
       flash[:notice] = t("invitations.edit_user.user_profile_saved")
     else
       flash[:error] = t("invitations.edit_user.not_loggedin")
     end
       (redirect_to(root_path); return)
+  end
+
+  protected
+
+  def invitation_params
+    params.require(:invitation).permit([:emails, :role])
   end
 
 end

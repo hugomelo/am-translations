@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user
+  before_action :find_user
 
   def autocomplete_user_name
   	respond_to do |format|

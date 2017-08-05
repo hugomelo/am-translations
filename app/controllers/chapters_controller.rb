@@ -1,7 +1,7 @@
 class ChaptersController < ApplicationController
 
   def remaining_translators
-  	@user = User.find params[:user_id]
+    @user = User.find params.permit(:user_id)
   	@project = Project.find_by_from_document_id params[:document_id]
   	@chapters = Chapter.t_remaining(params[:document_id])
 

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :find_project, :except => [:new, :create, :index]
+  before_action :find_project, :except => [:new, :create, :index]
 
   def new
     @project = Project.new
