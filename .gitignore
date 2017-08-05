@@ -27,3 +27,5 @@ menu
 tags
 
 public/system
+/public/packs
+/node_modules
