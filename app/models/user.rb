@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   ROLES = %w[admin reader]
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :name_email
+  #attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :name_email
   validates :name, presence: true
 
   has_many :projects, :foreign_key => :owner_id
