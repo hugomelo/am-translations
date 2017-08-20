@@ -1,9 +1,9 @@
 projects = {
-	loadChapter: function() {
-		var url = $(this).data('url');
-		var content = $(this).next();
-		if (content.html().trim().length < 20) {
-			content.load(url, function(data){
+  loadChapter: function() {
+    var url = $(this).data('url');
+    var content = $(this).next();
+    if (content.html().trim().length < 20) {
+      content.load(url, function(data){
 				content.fadeIn('slow');
 			});
 		}
