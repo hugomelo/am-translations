@@ -230,6 +230,7 @@ DEPENDENCIES
   puma (~> 3.7)
   pundit
   rails (~> 5.1.3)
+  responders
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
