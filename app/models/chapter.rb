@@ -1,5 +1,4 @@
-class Chapter < ActiveRecord::Base
-  attr_accessible :document_id, :name, :order
+class Chapter < ApplicationRecord
 
   has_many :paragraphs
   belongs_to :document

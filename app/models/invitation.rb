@@ -1,4 +1,4 @@
-class Invitation < ActiveRecord::Base
+class Invitation < ApplicationRecord
   attr_accessible :token, :email, :name, :project_id, :role
   attr_reader :emails
   belongs_to :project

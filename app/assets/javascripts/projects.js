@@ -65,11 +65,12 @@ jQuery(document).ready(function() {
 
 	$(document).on('click','.cancel-button',projects.cleanupAddPerson);
 
-	projects.activateTypeahead();
+  if ($("#person_tokens").length)
+    projects.activateTypeahead();
 
 	//$('#project #chapters .chapter').on('click', projects.loadChapter);
 
 	$('#new_invitation h4.action').on('click', projects.toggleBlock);
-
+  $(".project .export-project").on("click", projects.exportDocument);
 });
 

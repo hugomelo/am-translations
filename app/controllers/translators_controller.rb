@@ -5,7 +5,7 @@ class TranslatorsController < ApplicationController
   end
 
   def create
-    @translator = Translator.create(params[:translator])
+    @translator = Translator.create(translator_params)
 
     respond_to do |format|
       if @translator.save
@@ -22,7 +22,7 @@ class TranslatorsController < ApplicationController
   def assign
     if request.xhr?
       @project = Project.find params[:project_id]
-      translator = @project.translators.build(params[:translator])
+      translator = @project.translators.build(translator_params)
       if translator and translator.save
         @project.translators << translator
         @unassigned_chapters = Chapter.t_remaining @project.from_document_id
@@ -33,5 +33,9 @@ class TranslatorsController < ApplicationController
     else
       redirect_to "/notfound"
     end
+  end
+
+  def translator_params
+    params.require(:translator).permit(:project_id, :user_id, :chapter_ids)
   end
 end

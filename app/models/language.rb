@@ -1,7 +1,4 @@
-class Language < ActiveRecord::Base
-  attr_accessible :abbreviation, :name
-
-  belongs_to :chapter
+class Language < ApplicationRecord
 
   def name_abbrev
   	  "#{self.name} (#{self.abbreviation})"

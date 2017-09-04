@@ -232,9 +232,11 @@ en:
   users:
     dashboard:
       hi: 'Hi %s! This is your dashboard.'
-      projects: "Projects you've created"
+      projects: "Projects owned by you"
       reviewers: "Projects you are assigned to review"
       translators: "Projects you are assigned to translate"
+      add_translators: "add translators"
+      add_reviewers: "add reviewers"
       project_name: 'Project Name'
       translated_from: 'Translated from'
       translated_to: 'Translated to'

@@ -1,4 +1,4 @@
-class Review < ActiveRecord::Base
+class Review < ApplicationRecord
   belongs_to :reviewer
   belongs_to :document
   attr_accessible :general_comment

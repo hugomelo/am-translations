@@ -124,3 +124,5 @@ Language.delete_all
 languages.each_with_index do |language,i|
  Language.create(id: i+1, name: language[0], abbreviation: language[1])
 end
+# Fix Languages id sequence in the db
+ActiveRecord::Base.connection.reset_pk_sequence!("languages")

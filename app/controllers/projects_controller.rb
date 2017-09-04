@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = Project.new(project_params)
     @project.owner_id = current_user.id
 
     respond_to do |wants|
@@ -80,6 +80,11 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def project_params
+    params.require(:project).permit(:owner_id, :to_language_id, :from_language_id, :from_document_id, :to_document_id, :source_filename, :name, :content_type)
+  end
+
   def find_project
     if not params[:id].nil? and Project.exists?(params[:id])
     @project = Project.find params[:id]

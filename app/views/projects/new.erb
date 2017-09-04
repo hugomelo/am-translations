@@ -5,7 +5,13 @@
     <% if @project.errors.any? %>
       <div class=error_messages>
         <% @project.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li><%= msg.to_s %></li>
+        <% end %>
+        <% @project.from_document && @project.from_document.errors.full_messages.each do |msg| %>
+          <li><%= msg.to_s %></li>
+        <% end %>
+        <% @project.to_document && @project.to_document.errors.full_messages.each do |msg| %>
+          <li><%= msg.to_s %></li>
         <% end %>
       </div>
     <% end %>
